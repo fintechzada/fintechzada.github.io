@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crédito Fintechzada | Fintechzada</title>
+  <meta name="description" content="Crédito Fintechzada: empréstimo pessoal, parcelamento, capital de giro PJ e antecipação de recebíveis com CET transparente.">
+  <link rel="icon" href="fintechzada-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="credito.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .tag { color: var(--cr-primary-dark, #0B3B3C); }
+    .tag i { color: var(--cr-primary, #0F766E); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <nav><ul class="nav-links">
+        <li><a href="conta-digital.html">Conta Digital</a></li>
+        <li><a href="cartao.html">Cartão</a></li>
+        <li><a class="active" href="credito.html">Crédito</a></li>
+        <li><a href="investimentos.html">Investimentos</a></li>
+        <li><a href="seguros.html">Seguros</a></li>
+        <li><a href="empresas.html">Empresas</a></li>
+      </ul></nav>
+      <a class="btn btn-primary" href="#simular">Simular</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero ≠ split claro: workspace escuro + simulador central -->
+    <section class="cr-workspace" id="simular">
+      <div class="cr-workspace-head">
+        <div class="cr-kicker"><i data-lucide="hand-coins"></i> Crédito Fintechzada</div>
+        <h1>Simule. Compare. Contrate.</h1>
+        <p class="cr-workspace-sub">Empréstimo, parcelamento, capital de giro e antecipação — com CET, parcelas e cronograma visíveis antes de qualquer assinatura.</p>
+        <div class="cr-inline-chips">
+          <span><i data-lucide="percent"></i>CET na simulação</span>
+          <span><i data-lucide="file-check"></i>Contrato digital</span>
+          <span><i data-lucide="landmark"></i>Integrado à Conta Digital</span>
+        </div>
+      </div>
+
+      <div class="cr-sim-dock">
+        <div class="cr-sim-toolbar" role="tablist" aria-label="Produto de crédito">
+          <button class="cr-sim-tab active" type="button" data-product="pessoal" role="tab">Empréstimo pessoal</button>
+          <button class="cr-sim-tab" type="button" data-product="parcela" role="tab">Parcelamento</button>
+          <button class="cr-sim-tab" type="button" data-product="pj" role="tab">Capital de giro</button>
+          <button class="cr-sim-tab" type="button" data-product="antecipa" role="tab">Antecipação</button>
+        </div>
+        <div class="cr-sim-main">
+          <div class="cr-sim-inputs">
+            <div class="cr-sim-label">Valor desejado</div>
+            <div class="cr-sim-value" id="sim-val">R$ 10.000</div>
+            <input class="cr-sim-range" type="range" id="sim-range" min="1000" max="50000" step="500" value="10000" aria-label="Valor">
+            <div class="cr-sim-bounds"><span id="sim-min">R$ 1.000</span><span id="sim-max">R$ 50.000</span></div>
+            <div class="cr-sim-prazo" id="sim-prazos" role="group" aria-label="Prazo">
+              <button class="cr-prazo-btn" type="button" data-months="6">6×</button>
+              <button class="cr-prazo-btn active" type="button" data-months="12">12×</button>
+              <button class="cr-prazo-btn" type="button" data-months="24">24×</button>
+              <button class="cr-prazo-btn" type="button" data-months="36">36×</button>
+            </div>
+          </div>
+          <div class="cr-sim-output">
+            <div class="cr-output-grid">
+              <div class="cr-output-item">
+                <small id="sim-parc-label">Parcela (12×)</small>
+                <strong class="hot" id="sim-parc">R$ 930,40</strong>
+              </div>
+              <div class="cr-output-item">
+                <small>CET ao mês</small>
+                <strong id="sim-cet">2,49%</strong>
+              </div>
+              <div class="cr-output-item">
+                <small>Total da operação</small>
+                <strong id="sim-total">R$ 11.164,80</strong>
+              </div>
+            </div>
+            <button class="cr-sim-action" type="button">Continuar contratação</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trilho horizontal — ≠ bento grid -->
+    <section class="cr-rail-section" id="produtos">
+      <div class="cr-rail-head">
+        <h2>Quatro linhas. Um simulador.</h2>
+        <p>Deslize para conhecer cada produto — todos partem da mesma Conta Digital, com análise e contrato no app.</p>
+      </div>
+      <div class="cr-rail-track">
+        <article class="cr-rail-card">
+          <i data-lucide="hand-coins"></i>
+          <h3>Empréstimo pessoal</h3>
+          <p>Parcelas fixas para organizar despesas ou projetos. Desembolso na conta após aprovação.</p>
+          <div class="cr-rail-meta"><span>PF</span><span>até R$ 50k</span></div>
+        </article>
+        <article class="cr-rail-card">
+          <i data-lucide="scan-line"></i>
+          <h3>Parcelamento</h3>
+          <p>Parcele Pix e boletos selecionados no fluxo de pagamento, sem nova ida ao banco.</p>
+          <div class="cr-rail-meta"><span>PF</span><span>até 12×</span></div>
+        </article>
+        <article class="cr-rail-card">
+          <i data-lucide="building-2"></i>
+          <h3>Capital de giro</h3>
+          <p>Crédito PJ para estoque, folha e sazonalidade — prazos alinhados ao fluxo de caixa.</p>
+          <div class="cr-rail-meta"><span>PJ</span><span>até R$ 500k</span></div>
+        </article>
+        <article class="cr-rail-card">
+          <i data-lucide="calendar-clock"></i>
+          <h3>Antecipação</h3>
+          <p>Antecipe recebíveis com taxa e prazo informados antes da confirmação da operação.</p>
+          <div class="cr-rail-meta"><span>PJ</span><span>D+1</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Matriz comparativa — ≠ cards PF/PJ -->
+    <section class="cr-matrix-wrap">
+      <div class="cr-matrix-inner">
+        <h2>Compare as linhas lado a lado.</h2>
+        <p>Tabela objetiva para entender perfil, prazo e integração com a conta — antes de simular no app.</p>
+        <table class="cr-matrix">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Perfil</th>
+              <th>Prazo típico</th>
+              <th>CET na simulação</th>
+              <th>Desembolso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Empréstimo pessoal</td>
+              <td>PF</td>
+              <td>6 a 36 meses</td>
+              <td class="yes">Sim</td>
+              <td>Conta Digital</td>
+            </tr>
+            <tr>
+              <td>Parcelamento</td>
+              <td>PF</td>
+              <td>3 a 12 meses</td>
+              <td class="yes">Sim</td>
+              <td>Débito automático</td>
+            </tr>
+            <tr>
+              <td>Capital de giro</td>
+              <td>PJ</td>
+              <td>12 a 48 meses</td>
+              <td class="yes">Sim</td>
+              <td>Conta PJ</td>
+            </tr>
+            <tr>
+              <td>Antecipação de recebíveis</td>
+              <td>PJ</td>
+              <td>Operação única</td>
+              <td class="yes">Sim</td>
+              <td>D+1 na conta</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Preview documento — ≠ painel dark CET -->
+    <section class="cr-doc-section">
+      <div class="cr-doc-layout">
+        <div class="cr-doc-copy">
+          <h2>O que você vê na simulação é o que entra no contrato.</h2>
+          <p>Antes de assinar, a prévia reproduz valor, CET, IOF e cronograma — sem surpresas na letra miúda.</p>
+          <ul class="cr-doc-list">
+            <li><i data-lucide="check"></i>CET com composição de juros, IOF e tarifas</li>
+            <li><i data-lucide="check"></i>Parcelas fixas com datas de vencimento</li>
+            <li><i data-lucide="check"></i>Débito automático na Conta Digital</li>
+            <li><i data-lucide="check"></i>Histórico e comprovantes no app</li>
+          </ul>
+        </div>
+        <div class="cr-paper" aria-label="Prévia da simulação">
+          <div class="cr-paper-header">
+            <strong>FINTECHZADA S/A — CRÉDITO</strong>
+            <span>Simulação nº 2026-04821 · válida por 24h</span>
+          </div>
+          <div class="cr-paper-line"><span>Valor solicitado</span><span id="paper-val">R$ 10.000,00</span></div>
+          <div class="cr-paper-line"><span>Prazo</span><span id="paper-prazo">12 parcelas mensais</span></div>
+          <div class="cr-paper-line"><span>Parcela</span><span id="paper-parc">R$ 930,40</span></div>
+          <div class="cr-paper-line"><span>Taxa de juros</span><span>2,49% a.m.</span></div>
+          <div class="cr-paper-line"><span>IOF estimado</span><span>R$ 142,80</span></div>
+          <div class="cr-paper-line"><span>CET</span><span id="paper-cet">2,89% a.m.</span></div>
+          <div class="cr-paper-total"><span>Total a pagar</span><span id="paper-total">R$ 11.164,80</span></div>
+          <p class="cr-paper-foot">Sujeito à análise de crédito. Condições finais podem variar conforme perfil e produto. Simulação não constitui proposta vinculante.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gráfico amortização — ≠ tabela/timeline -->
+    <section class="cr-chart-section">
+      <div class="cr-chart-inner">
+        <h2>Composição das parcelas ao longo do prazo.</h2>
+        <p>Parcelas fixas, mas a proporção entre amortização e juros muda mês a mês — transparência desde a simulação.</p>
+        <div class="cr-bars" id="cr-bars" aria-hidden="true"></div>
+        <div class="cr-chart-legend">
+          <em class="p">Amortização</em>
+          <em class="j">Juros</em>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toggle único — ≠ dois cards PF/PJ -->
+    <section class="cr-profile-section">
+      <div class="cr-matrix-inner" style="text-align:center">
+        <h2>PF ou PJ: limites e produtos diferentes.</h2>
+        <p style="margin:10px auto 0;max-width:480px;color:#64748B">Alterne o perfil para ver o que está disponível na sua simulação.</p>
+      </div>
+      <div class="cr-profile-panel">
+        <div class="cr-profile-toggle">
+          <button class="active" type="button" data-profile="pf">Pessoa física</button>
+          <button type="button" data-profile="pj">Pessoa jurídica</button>
+        </div>
+        <div class="cr-profile-body" id="profile-body">
+          <h3 id="profile-title">Crédito para uso pessoal</h3>
+          <p id="profile-desc">Empréstimo e parcelamento integrados ao app — análise em minutos e contrato digital.</p>
+          <div class="cr-profile-rows" id="profile-rows"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cr-bar-cta">
+      <div class="cr-bar-cta-inner">
+        <div>
+          <strong>Pronto para simular de verdade?</strong>
+          <span>Abra a Conta Digital e acesse Crédito no app. Sujeito à análise.</span>
+        </div>
+        <a class="btn btn-primary btn-lg" href="conta-digital.html">Abrir Conta Digital</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="compliance"><div class="compliance-inner">As operações de crédito são oferecidas pela Fintechzada S/A e estão sujeitas à análise de crédito e às condições contratuais vigentes. O CET representa o custo efetivo total da operação, incluindo juros, tarifas, tributos e seguros obrigatórios, quando aplicáveis.</div></div>
+  <div id="site-footer"></div>
+  <script src="product.js"></script>
+  <script>
+    (function () {
+      var products = {
+        pessoal: { min: 1000, max: 50000, step: 500, default: 10000, rate: 0.09304, cet: "2,49%", prazos: [6, 12, 24, 36], defaultMonths: 12 },
+        parcela: { min: 200, max: 15000, step: 100, default: 3000, rate: 0.085, cet: "2,12%", prazos: [3, 6, 12], defaultMonths: 6 },
+        pj: { min: 5000, max: 500000, step: 5000, default: 80000, rate: 0.0782, cet: "1,98%", prazos: [12, 24, 36, 48], defaultMonths: 24 },
+        antecipa: { min: 1000, max: 200000, step: 1000, default: 25000, rate: 0.042, cet: "3,85%", prazos: [1], defaultMonths: 1, single: true }
+      };
+      var profiles = {
+        pf: {
+          title: "Crédito para uso pessoal",
+          desc: "Empréstimo e parcelamento integrados ao app — análise em minutos e contrato digital.",
+          rows: [["Empréstimo pessoal", "até R$ 50.000"], ["Parcelamento", "até 12×"], ["Prazo máximo", "36 meses"], ["Análise", "~5 minutos"]]
+        },
+        pj: {
+          title: "Crédito para operação empresarial",
+          desc: "Capital de giro e antecipação vinculados à Conta PJ, com visibilidade para o financeiro.",
+          rows: [["Capital de giro", "até R$ 500.000"], ["Antecipação", "D+1"], ["Prazo máximo", "48 meses"], ["Centros de custo", "Integrados"]]
+        }
+      };
+
+      var activeProduct = "pessoal";
+      var months = 12;
+      var range = document.getElementById("sim-range");
+      var prazosEl = document.getElementById("sim-prazos");
+
+      function fmt(n) {
+        return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      }
+
+      function fmtK(n) {
+        return n >= 1000 ? "R$ " + (n / 1000).toLocaleString("pt-BR") + "k" : fmt(n);
+      }
+
+      function renderPrazos(p) {
+        prazosEl.innerHTML = "";
+        if (p.single) {
+          prazosEl.innerHTML = '<span style="font-size:13px;color:rgba(255,255,255,0.55);font-weight:700;padding:8px 0">Taxa única · liquidação D+1</span>';
+          months = 1;
+          return;
+        }
+        p.prazos.forEach(function (m) {
+          var btn = document.createElement("button");
+          btn.className = "cr-prazo-btn" + (m === months ? " active" : "");
+          btn.type = "button";
+          btn.dataset.months = m;
+          btn.textContent = m + "×";
+          btn.addEventListener("click", function () {
+            months = m;
+            prazosEl.querySelectorAll(".cr-prazo-btn").forEach(function (b) { b.classList.toggle("active", +b.dataset.months === m); });
+            update();
+          });
+          prazosEl.appendChild(btn);
+        });
+      }
+
+      function renderBars() {
+        var bars = document.getElementById("cr-bars");
+        bars.innerHTML = "";
+        for (var i = 1; i <= Math.min(months, 12); i++) {
+          var prinPct = 35 + i * 4;
+          var jurosPct = 100 - prinPct;
+          var col = document.createElement("div");
+          col.className = "cr-bar-col";
+          col.innerHTML = '<div class="cr-bar-stack" style="height:' + (40 + i * 8) + 'px"><div class="cr-bar-juros" style="flex:' + jurosPct + '"></div><div class="cr-bar-prin" style="flex:' + prinPct + '"></div></div><label>' + i + 'ª</label>';
+          bars.appendChild(col);
+        }
+      }
+
+      function update() {
+        var p = products[activeProduct];
+        var v = +range.value;
+        var monthly, total;
+
+        if (p.single) {
+          monthly = v * p.rate;
+          total = v;
+          document.getElementById("sim-parc-label").textContent = "Taxa da operação";
+          document.getElementById("sim-parc").textContent = fmt(monthly);
+          document.getElementById("sim-total").textContent = fmt(v - monthly);
+        } else {
+          monthly = v * p.rate;
+          total = monthly * months;
+          document.getElementById("sim-parc-label").textContent = "Parcela (" + months + "×)";
+          document.getElementById("sim-parc").textContent = fmt(monthly);
+          document.getElementById("sim-total").textContent = fmt(total);
+        }
+
+        document.getElementById("sim-val").textContent = fmt(v).replace(",00", "");
+        document.getElementById("sim-cet").textContent = p.cet;
+        document.getElementById("paper-val").textContent = fmt(v);
+        document.getElementById("paper-prazo").textContent = p.single ? "Liquidação D+1" : months + " parcelas mensais";
+        document.getElementById("paper-parc").textContent = fmt(monthly);
+        document.getElementById("paper-cet").textContent = p.cet + " a.m.";
+        document.getElementById("paper-total").textContent = p.single ? fmt(v - monthly) : fmt(total);
+        renderBars();
+      }
+
+      function setProduct(key) {
+        activeProduct = key;
+        var p = products[key];
+        months = p.defaultMonths;
+        range.min = p.min;
+        range.max = p.max;
+        range.step = p.step;
+        range.value = p.default;
+        document.getElementById("sim-min").textContent = fmtK(p.min);
+        document.getElementById("sim-max").textContent = fmtK(p.max);
+        document.querySelectorAll(".cr-sim-tab").forEach(function (btn) {
+          btn.classList.toggle("active", btn.dataset.product === key);
+        });
+        renderPrazos(p);
+        update();
+      }
+
+      function setProfile(key) {
+        var data = profiles[key];
+        document.getElementById("profile-title").textContent = data.title;
+        document.getElementById("profile-desc").textContent = data.desc;
+        document.getElementById("profile-rows").innerHTML = data.rows.map(function (r) {
+          return '<div class="cr-profile-row"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>';
+        }).join("");
+        document.querySelectorAll(".cr-profile-toggle button").forEach(function (btn) {
+          btn.classList.toggle("active", btn.dataset.profile === key);
+        });
+      }
+
+      document.querySelectorAll(".cr-sim-tab").forEach(function (btn) {
+        btn.addEventListener("click", function () { setProduct(btn.dataset.product); });
+      });
+      document.querySelectorAll(".cr-profile-toggle button").forEach(function (btn) {
+        btn.addEventListener("click", function () { setProfile(btn.dataset.profile); });
+      });
+      range.addEventListener("input", update);
+      setProduct("pessoal");
+      setProfile("pf");
+    })();
+  </script>
+</body>
+</html>

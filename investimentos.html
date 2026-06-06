@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintechzada Investimentos | Carteira, renda fixa e previdência</title>
+  <meta name="description" content="Fintechzada Investimentos: plataforma para renda fixa, fundos, FIIs, renda variável e previdência, com risco, prazo e liquidez visíveis antes da aplicação.">
+  <link rel="icon" href="fintechzada-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --invest-teal: #0F766E;
+      --invest-teal-dark: #0B3B3C;
+      --invest-mint: #14B8A6;
+      --invest-lime: #A3E635;
+      --invest-ink: #061A1B;
+    }
+
+    body {
+      background:
+        linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 34%, #F8FAFC 100%);
+    }
+
+    .nav .btn-primary,
+    .btn-primary {
+      background: linear-gradient(135deg, var(--invest-teal-dark), var(--invest-teal));
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.24);
+    }
+
+    .nav .btn-primary:hover,
+    .btn-primary:hover { background: linear-gradient(135deg, #062D2E, #115E59); }
+
+    .invest-hero {
+      min-height: 760px;
+      padding: 118px 24px 70px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(20, 184, 166, 0.22), transparent 28%),
+        radial-gradient(circle at 10% 78%, rgba(163, 230, 53, 0.12), transparent 28%),
+        linear-gradient(135deg, #061A1B, #0F2A2B 52%, #0B3B3C);
+    }
+
+    .invest-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, #000, transparent 88%);
+    }
+
+    .invest-hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .invest-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 999px;
+      color: #CCFBF1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .invest-hero h1 {
+      max-width: 690px;
+      margin-top: 22px;
+      font-size: clamp(42px, 5.6vw, 74px);
+      line-height: 0.98;
+      color: #fff;
+    }
+
+    .invest-hero p {
+      max-width: 580px;
+      margin-top: 22px;
+      color: #CBD5E1;
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    .invest-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .invest-actions .btn-ghost {
+      color: #D1FAE5;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(209,250,229,0.22);
+    }
+
+    .invest-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin-top: 34px;
+    }
+
+    .proof-pill {
+      min-height: 74px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .proof-pill strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .proof-pill span {
+      display: block;
+      margin-top: 4px;
+      color: #94A3B8;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .market-board {
+      position: relative;
+      min-height: 560px;
+      padding: 22px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 34px 90px rgba(0,0,0,0.36);
+      backdrop-filter: blur(18px);
+    }
+
+    .board-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .board-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .board-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #D1FAE5;
+      background: rgba(34,197,94,0.12);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .board-live::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.12);
+    }
+
+    .portfolio-total {
+      padding: 24px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(163,230,53,0.15), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .portfolio-total span {
+      color: #94A3B8;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .portfolio-total strong {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--font-heading);
+      font-size: 44px;
+      line-height: 1;
+    }
+
+    .portfolio-total small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      color: #A7F3D0;
+      font-weight: 850;
+    }
+
+    .allocation-ring {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .ring {
+      width: 180px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background:
+        conic-gradient(#0F766E 0 58%, #14B8A6 58% 78%, #A3E635 78% 91%, #F59E0B 91% 100%);
+      box-shadow: inset 0 0 0 22px rgba(6,26,27,0.92);
+    }
+
+    .ring strong {
+      font-family: var(--font-heading);
+      font-size: 26px;
+    }
+
+    .allocation-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .alloc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      color: #E2E8F0;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .alloc-item span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--dot);
+    }
+
+    .asset-ticker {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .ticker-card {
+      min-height: 104px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .ticker-card span {
+      color: #94A3B8;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .ticker-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 18px;
+    }
+
+    .ticker-card small {
+      display: block;
+      margin-top: 8px;
+      color: #A7F3D0;
+      font-weight: 850;
+    }
+
+    .investment-nav {
+      position: sticky;
+      top: 96px;
+      z-index: 8;
+      padding: 16px 24px 0;
+      margin-top: -46px;
+    }
+
+    .investment-nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 18px 50px rgba(15,23,42,0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .investment-nav a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .investment-nav a:hover {
+      color: #0B3B3C;
+      background: #ECFDF5;
+    }
+
+    .goal-section {
+      padding: 92px 24px 72px;
+      background: #fff;
+    }
+
+    .goal-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .goal-header {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .goal-header h2 {
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1;
+    }
+
+    .goal-header p {
+      color: #64748B;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .goal-lanes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .goal-card {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border-radius: 28px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .goal-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -30% 20%;
+      height: 180px;
+      background: radial-gradient(ellipse at center, var(--goal-glow), transparent 66%);
+    }
+
+    .goal-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #fff;
+      background: var(--goal-color);
+      margin-bottom: 18px;
+    }
+
+    .goal-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .goal-card p {
+      color: #64748B;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    .goal-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .goal-meta span {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #E2E8F0;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .shelf-section {
+      padding: 86px 24px;
+      background: #F8FAFC;
+    }
+
+    .shelf {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .asset-shelf {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .asset-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 24px;
+      border-radius: 26px;
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 14px 36px rgba(15,23,42,0.06);
+    }
+
+    .asset-type {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: var(--asset-color);
+      background: var(--asset-bg);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .asset-card h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .asset-card p {
+      color: #64748B;
+      line-height: 1.48;
+    }
+
+    .asset-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .asset-metric {
+      padding: 12px;
+      border-radius: 16px;
+      background: #F8FAFC;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .asset-metric strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #0F172A;
+    }
+
+    .risk-meter {
+      width: 90px;
+      height: 90px;
+      display: grid;
+      place-items: center;
+      align-self: start;
+      border-radius: 50%;
+      background: conic-gradient(var(--asset-color) calc(var(--risk) * 20%), #E2E8F0 0);
+      box-shadow: inset 0 0 0 14px #fff;
+      color: #0F172A;
+      font-family: var(--font-heading);
+      font-weight: 900;
+    }
+
+    .simulator-section {
+      padding: 92px 24px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 86% 14%, rgba(20,184,166,0.2), transparent 28%),
+        radial-gradient(circle at 14% 86%, rgba(163,230,53,0.1), transparent 30%),
+        linear-gradient(135deg, #061A1B, #0F2A2B 60%, #0B3B3C);
+    }
+
+    .simulator {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .simulator h2 {
+      color: #fff;
+      font-size: clamp(34px, 4.4vw, 62px);
+      line-height: 1;
+    }
+
+    .simulator p {
+      margin-top: 18px;
+      color: #CBD5E1;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .projection-card {
+      padding: 26px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+    }
+
+    .projection-bars {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 8px;
+      align-items: end;
+      height: 260px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .projection-bars span {
+      display: block;
+      border-radius: 999px 999px 6px 6px;
+      background: linear-gradient(180deg, #A3E635, #14B8A6 55%, #0F766E);
+      min-height: 22px;
+      height: var(--h);
+    }
+
+    .projection-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .projection-summary div {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .projection-summary span {
+      color: #94A3B8;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .projection-summary strong {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--font-heading);
+      font-size: 18px;
+    }
+
+    .governance-section {
+      padding: 82px 24px;
+      background: #fff;
+    }
+
+    .governance {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .governance-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+
+    .governance-card i {
+      color: #0F766E;
+      margin-bottom: 16px;
+    }
+
+    .governance-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .governance-card p {
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    .invest-cta {
+      padding: 78px 24px;
+      background: #ECFDF5;
+    }
+
+    .invest-cta-box {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 34px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(163,230,53,0.18), transparent 28%),
+        linear-gradient(135deg, #061A1B, #0B3B3C);
+      box-shadow: 0 24px 70px rgba(15,23,42,0.18);
+    }
+
+    .invest-cta h2 {
+      color: #fff;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1;
+    }
+
+    .invest-cta p {
+      max-width: 660px;
+      margin-top: 14px;
+      color: #CBD5E1;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      .invest-hero-inner,
+      .goal-header,
+      .simulator,
+      .invest-cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .market-board { min-height: auto; }
+      .investment-nav { display: none; }
+      .goal-lanes,
+      .asset-shelf,
+      .governance {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .invest-hero { padding: 92px 18px 54px; min-height: auto; }
+      .invest-proof,
+      .allocation-ring,
+      .asset-ticker,
+      .goal-lanes,
+      .asset-shelf,
+      .asset-card,
+      .simulator,
+      .projection-summary,
+      .governance {
+        grid-template-columns: 1fr;
+      }
+
+      .ring { margin: 0 auto; }
+      .goal-section,
+      .shelf-section,
+      .simulator-section,
+      .governance-section { padding: 62px 18px; }
+      .invest-actions .btn,
+      .invest-cta .btn { width: 100%; }
+      .projection-bars { height: 210px; gap: 5px; padding: 12px; }
+      .invest-cta-box { padding: 24px; border-radius: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <nav><ul class="nav-links">
+        <li><a href="conta-digital.html">Conta Digital</a></li>
+        <li><a href="cartao.html">Cartão</a></li>
+        <li><a href="credito.html">Crédito</a></li>
+        <li><a class="active" href="investimentos.html">Investimentos</a></li>
+        <li><a href="seguros.html">Seguros</a></li>
+        <li><a href="empresas.html">Empresas</a></li>
+      </ul></nav>
+      <a class="btn btn-primary" href="#investir">Investir</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="invest-hero">
+      <div class="invest-hero-inner">
+        <div>
+          <div class="invest-eyebrow"><i data-lucide="line-chart"></i> Fintechzada Investimentos</div>
+          <h1>Sua carteira com risco, prazo e liquidez no mesmo painel.</h1>
+          <p>Uma plataforma para montar reserva, diversificar patrimônio e planejar o longo prazo sem perder de vista o que realmente importa antes de aplicar: risco, prazo, liquidez, imposto e custo.</p>
+          <div class="invest-actions">
+            <a class="btn btn-primary btn-lg" href="#investir">Começar a investir</a>
+            <a class="btn btn-ghost btn-lg" href="#prateleira">Explorar ativos</a>
+          </div>
+          <div class="invest-proof">
+            <div class="proof-pill"><strong>CVM</strong><span>Distribuição regulada</span></div>
+            <div class="proof-pill"><strong>D+0</strong><span>Opções com liquidez diária</span></div>
+            <div class="proof-pill"><strong>4 perfis</strong><span>Do conservador ao arrojado</span></div>
+          </div>
+        </div>
+
+        <aside class="market-board" aria-label="Prévia da carteira de investimentos">
+          <div class="board-top">
+            <div class="board-title">Carteira consolidada</div>
+            <div class="board-live">mercado aberto</div>
+          </div>
+          <div class="portfolio-total">
+            <span>Patrimônio investido</span>
+            <strong>R$ 24.600,00</strong>
+            <small><i data-lucide="trending-up"></i> +12,4% a.a. no cenário projetado</small>
+          </div>
+          <div class="allocation-ring">
+            <div class="ring"><strong>4 ativos</strong></div>
+            <div class="allocation-list">
+              <div class="alloc-item"><span><i class="dot" style="--dot:#0F766E"></i>Renda fixa</span><strong>58%</strong></div>
+              <div class="alloc-item"><span><i class="dot" style="--dot:#14B8A6"></i>Fundos/FIIs</span><strong>20%</strong></div>
+              <div class="alloc-item"><span><i class="dot" style="--dot:#A3E635"></i>Renda variável</span><strong>13%</strong></div>
+              <div class="alloc-item"><span><i class="dot" style="--dot:#F59E0B"></i>Previdência</span><strong>9%</strong></div>
+            </div>
+          </div>
+          <div class="asset-ticker">
+            <div class="ticker-card"><span>CDB FZD 2027</span><strong>120% CDI</strong><small>Liquidez D+0</small></div>
+            <div class="ticker-card"><span>Tesouro Selic</span><strong>Baixo risco</strong><small>Reserva</small></div>
+            <div class="ticker-card"><span>FII Logística</span><strong>Renda mensal</strong><small>Volátil</small></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="investment-nav">
+      <div class="investment-nav-inner">
+        <a href="#objetivos">Objetivos</a>
+        <a href="#prateleira">Ativos</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#governanca">Governança</a>
+      </div>
+    </div>
+
+    <section class="goal-section" id="objetivos">
+      <div class="goal-shell">
+        <div class="goal-header">
+          <h2>Escolha pelo objetivo, não pela sopa de siglas.</h2>
+          <p>A experiência de investimento começa perguntando o que o dinheiro precisa fazer. Depois a plataforma aproxima produtos compatíveis com prazo, liquidez e tolerância a oscilação.</p>
+        </div>
+        <div class="goal-lanes">
+          <article class="goal-card" style="--goal-color:#0F766E;--goal-glow:rgba(15,118,110,0.16)">
+            <div class="goal-icon"><i data-lucide="shield"></i></div>
+            <h3>Reserva</h3>
+            <p>Produtos com liquidez rápida para emergências, saldo estratégico e previsibilidade.</p>
+            <div class="goal-meta"><span>Prazo <strong>D+0 a D+1</strong></span><span>Perfil <strong>Conservador</strong></span></div>
+          </article>
+          <article class="goal-card" style="--goal-color:#14B8A6;--goal-glow:rgba(20,184,166,0.16)">
+            <div class="goal-icon"><i data-lucide="home"></i></div>
+            <h3>Projetos</h3>
+            <p>Carteiras para metas de médio prazo, como entrada, reforma ou expansão profissional.</p>
+            <div class="goal-meta"><span>Prazo <strong>12-36 meses</strong></span><span>Perfil <strong>Moderado</strong></span></div>
+          </article>
+          <article class="goal-card" style="--goal-color:#A3E635;--goal-glow:rgba(163,230,53,0.18)">
+            <div class="goal-icon" style="color:#0F172A"><i data-lucide="sprout"></i></div>
+            <h3>Crescimento</h3>
+            <p>Exposição maior a fundos, FIIs e renda variável para quem aceita volatilidade.</p>
+            <div class="goal-meta"><span>Prazo <strong>3+ anos</strong></span><span>Perfil <strong>Arrojado</strong></span></div>
+          </article>
+          <article class="goal-card" style="--goal-color:#F59E0B;--goal-glow:rgba(245,158,11,0.16)">
+            <div class="goal-icon"><i data-lucide="landmark"></i></div>
+            <h3>Previdência</h3>
+            <p>Planos para longo prazo, sucessão patrimonial e planejamento tributário.</p>
+            <div class="goal-meta"><span>Prazo <strong>5+ anos</strong></span><span>Perfil <strong>Por plano</strong></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shelf-section" id="prateleira">
+      <div class="shelf">
+        <div class="section-head">
+          <div class="tag"><i data-lucide="layout-grid"></i> Prateleira de ativos</div>
+          <h2>Produtos com o que interessa na primeira tela.</h2>
+          <p class="lead">Antes da aplicação, cada card destaca liquidez, prazo, tributação, risco e custos. Menos brilho de vitrine, mais informação útil.</p>
+        </div>
+        <div class="asset-shelf">
+          <article class="asset-card" style="--asset-color:#0F766E;--asset-bg:#ECFDF5;--risk:1">
+            <div>
+              <div class="asset-type">Renda fixa</div>
+              <h3>CDB Fintechzada Liquidez</h3>
+              <p>Aplicação para reserva com resgate rápido em dias úteis e rendimento pós-fixado.</p>
+              <div class="asset-metrics"><div class="asset-metric">Liquidez<strong>D+0</strong></div><div class="asset-metric">IR<strong>Tabela regressiva</strong></div><div class="asset-metric">Perfil<strong>Conservador</strong></div></div>
+            </div>
+            <div class="risk-meter">1/5</div>
+          </article>
+          <article class="asset-card" style="--asset-color:#14B8A6;--asset-bg:#F0FDFA;--risk:2">
+            <div>
+              <div class="asset-type">Tesouro</div>
+              <h3>Tesouro Selic 2029</h3>
+              <p>Título público para objetivos de curto e médio prazo, com baixa volatilidade relativa.</p>
+              <div class="asset-metrics"><div class="asset-metric">Liquidez<strong>D+1</strong></div><div class="asset-metric">Custos<strong>Taxa B3</strong></div><div class="asset-metric">Perfil<strong>Conservador</strong></div></div>
+            </div>
+            <div class="risk-meter">2/5</div>
+          </article>
+          <article class="asset-card" style="--asset-color:#A3E635;--asset-bg:#F7FEE7;--risk:3">
+            <div>
+              <div class="asset-type">Fundos/FIIs</div>
+              <h3>Carteira Renda Imobiliária</h3>
+              <p>Exposição diversificada a fundos imobiliários, com foco em renda recorrente.</p>
+              <div class="asset-metrics"><div class="asset-metric">Liquidez<strong>D+2</strong></div><div class="asset-metric">Volatilidade<strong>Média</strong></div><div class="asset-metric">Perfil<strong>Moderado</strong></div></div>
+            </div>
+            <div class="risk-meter">3/5</div>
+          </article>
+          <article class="asset-card" style="--asset-color:#F59E0B;--asset-bg:#FFFBEB;--risk:4">
+            <div>
+              <div class="asset-type">Renda variável</div>
+              <h3>Cesta Brasil Crescimento</h3>
+              <p>Ações e BDRs para diversificação de longo prazo, sujeita a oscilação de mercado.</p>
+              <div class="asset-metrics"><div class="asset-metric">Liquidez<strong>D+2</strong></div><div class="asset-metric">Volatilidade<strong>Alta</strong></div><div class="asset-metric">Perfil<strong>Arrojado</strong></div></div>
+            </div>
+            <div class="risk-meter">4/5</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="simulator-section" id="simulador">
+      <div class="simulator">
+        <div>
+          <div class="invest-eyebrow"><i data-lucide="calculator"></i> Simulador de objetivos</div>
+          <h2>Projete cenários sem vender certeza.</h2>
+          <p>O simulador mostra hipóteses de evolução considerando aportes, prazo e perfil. Ele ajuda a comparar caminhos, mas mantém o aviso no lugar certo: projeção não é promessa.</p>
+          <div class="invest-actions">
+            <a class="btn btn-primary btn-lg" href="#investir">Simular no app</a>
+          </div>
+        </div>
+        <div class="projection-card">
+          <div class="projection-bars" aria-label="Projeção visual de carteira">
+            <span style="--h:18%"></span><span style="--h:24%"></span><span style="--h:28%"></span><span style="--h:35%"></span>
+            <span style="--h:42%"></span><span style="--h:48%"></span><span style="--h:54%"></span><span style="--h:62%"></span>
+            <span style="--h:70%"></span><span style="--h:78%"></span><span style="--h:88%"></span><span style="--h:96%"></span>
+          </div>
+          <div class="projection-summary">
+            <div><span>Aporte inicial</span><strong>R$ 5.000</strong></div>
+            <div><span>Aporte mensal</span><strong>R$ 600</strong></div>
+            <div><span>Horizonte</span><strong>36 meses</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="governance-section" id="governanca">
+      <div class="governance">
+        <article class="governance-card"><i data-lucide="badge-check"></i><h3>Perfil antes de produto</h3><p>A plataforma solicita perfil de investidor antes de liberar recomendações e destaca incompatibilidades.</p></article>
+        <article class="governance-card"><i data-lucide="file-text"></i><h3>Documentos no app</h3><p>Extratos, informes, notas e histórico ficam organizados junto da Conta Digital.</p></article>
+        <article class="governance-card"><i data-lucide="shield-alert"></i><h3>Aviso de risco sempre visível</h3><p>Rentabilidade passada não garante rentabilidade futura. Investimentos podem resultar em perdas.</p></article>
+      </div>
+    </section>
+
+    <section class="invest-cta" id="investir">
+      <div class="invest-cta-box">
+        <div><h2>Ative a plataforma pela Conta Digital.</h2><p>Abra sua conta, preencha o perfil de investidor e acesse a prateleira de produtos compatível com seus objetivos.</p></div>
+        <a class="btn btn-primary btn-lg" href="conta-digital.html">Abrir conta</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="compliance"><div class="compliance-inner">Fintechzada Investimentos é uma plataforma da Fintechzada S/A, registrada na CVM. Os produtos apresentados possuem características, riscos e tributação próprios. Leia o material informativo antes de investir. Rentabilidade passada não garante rentabilidade futura.</div></div>
+  <div id="site-footer"></div>
+  <script src="product.js"></script>
+</body>
+</html>

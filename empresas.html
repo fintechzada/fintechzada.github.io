@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintechzada Empresas | Conta PJ</title>
+  <meta name="description" content="Conta PJ Fintechzada para empresas brasileiras: Pix, boletos, cobranca, cartoes corporativos, permissoes, relatorios e atendimento PJ.">
+  <link rel="icon" href="fintechzada-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --pj-ink: #102326;
+      --pj-muted: #64748B;
+      --pj-line: #D9E7E4;
+      --pj-paper: #FBFEFC;
+      --pj-mint: #ECFDF5;
+      --pj-teal: #0F766E;
+      --pj-deep: #061A1B;
+      --pj-lime: #A3E635;
+      --pj-blue: #2563EB;
+      --pj-amber: #F59E0B;
+    }
+
+    .nav .btn-primary,
+    .btn-primary {
+      background: linear-gradient(135deg, #0B3B3C, #0F766E);
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.22);
+    }
+
+    .pj-hero {
+      padding: 116px 24px 0;
+      background:
+        linear-gradient(90deg, rgba(15,118,110,0.08) 1px, transparent 1px),
+        linear-gradient(180deg, #F7FFFB 0%, #ECFDF5 72%, #fff 72%, #fff 100%);
+      background-size: 76px 100%, auto;
+      overflow: hidden;
+    }
+
+    .pj-hero-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.78fr);
+      gap: 56px;
+      align-items: end;
+    }
+
+    .pj-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      color: #0B3B3C;
+      background: rgba(15,118,110,0.09);
+      border: 1px solid rgba(15,118,110,0.16);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .pj-hero h1 {
+      max-width: 780px;
+      color: var(--pj-ink);
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.98;
+    }
+
+    .pj-hero p {
+      max-width: 650px;
+      margin-top: 22px;
+      color: #4B6470;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .pj-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .pj-receipt {
+      position: relative;
+      margin-bottom: -54px;
+      padding: 28px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--pj-line);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12);
+    }
+
+    .pj-receipt::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: -12px;
+      height: 24px;
+      background:
+        linear-gradient(135deg, transparent 9px, #fff 0) left,
+        linear-gradient(225deg, transparent 9px, #fff 0) right;
+      background-size: 18px 24px;
+      background-repeat: repeat-x;
+      filter: drop-shadow(0 -1px 0 var(--pj-line));
+    }
+
+    .receipt-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #CBD5E1;
+    }
+
+    .receipt-top img {
+      width: 128px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .receipt-status {
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #0B3B3C;
+      background: var(--pj-lime);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .receipt-title {
+      margin-top: 22px;
+    }
+
+    .receipt-title span {
+      display: block;
+      color: var(--pj-muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .receipt-title strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--pj-ink);
+      font-family: var(--font-heading);
+      font-size: 36px;
+    }
+
+    .receipt-lines {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .receipt-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #EEF2F7;
+      color: #405B62;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .receipt-line strong {
+      color: var(--pj-ink);
+      text-align: right;
+    }
+
+    .hero-proof {
+      max-width: 1240px;
+      margin: 90px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--pj-line);
+      background: #fff;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    .proof-item {
+      min-height: 116px;
+      padding: 20px;
+      border-right: 1px solid var(--pj-line);
+    }
+
+    .proof-item:last-child { border-right: 0; }
+
+    .proof-item strong {
+      display: block;
+      color: var(--pj-ink);
+      font-family: var(--font-heading);
+      font-size: 22px;
+    }
+
+    .proof-item span {
+      display: block;
+      margin-top: 8px;
+      color: var(--pj-muted);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.4;
+    }
+
+    .pj-section {
+      padding: 92px 24px;
+      background: #fff;
+    }
+
+    .pj-section.soft { background: #F8FAFC; }
+
+    .section-wide {
+      max-width: 1240px;
+      margin: 0 auto 36px;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 42px;
+      align-items: end;
+    }
+
+    .section-wide h2,
+    .pj-copy h2 {
+      color: var(--pj-ink);
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1;
+    }
+
+    .section-wide p,
+    .pj-copy p {
+      color: var(--pj-muted);
+      font-size: 18px;
+      line-height: 1.58;
+    }
+
+    .pj-copy p { margin-top: 18px; }
+
+    .offer-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .offer-card {
+      min-height: 320px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--pj-line);
+      background: linear-gradient(180deg, #fff, #F8FFFC);
+    }
+
+    .offer-card.dark {
+      color: #fff;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(163,230,53,0.18), transparent 30%),
+        linear-gradient(135deg, #061A1B, #0B3B3C);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .offer-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 18px;
+      color: #fff;
+      background: var(--tone);
+    }
+
+    .offer-card h3 {
+      color: var(--pj-ink);
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .offer-card.dark h3 { color: #fff; }
+
+    .offer-card p {
+      color: var(--pj-muted);
+      line-height: 1.55;
+    }
+
+    .offer-card.dark p { color: #CBD5E1; }
+
+    .offer-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .offer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148,163,184,0.24);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .offer-card.dark .offer-list li { color: #E2E8F0; }
+    .offer-list i { flex-shrink: 0; color: #16A34A; margin-top: 1px; }
+
+    .journey {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .journey-steps {
+      display: grid;
+      gap: 14px;
+      counter-reset: pjstep;
+    }
+
+    .journey-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--pj-line);
+      box-shadow: 0 12px 32px rgba(15,23,42,0.05);
+      counter-increment: pjstep;
+    }
+
+    .journey-number {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #061A1B;
+      background: var(--pj-lime);
+      font-family: var(--font-heading);
+      font-weight: 950;
+    }
+
+    .journey-number::before { content: counter(pjstep); }
+
+    .journey-step h3 {
+      color: var(--pj-ink);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .journey-step p {
+      color: var(--pj-muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .compare-table {
+      max-width: 1240px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--pj-line);
+      background: #fff;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.06);
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      min-height: 72px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .compare-row:last-child { border-bottom: 0; }
+
+    .compare-row.header {
+      color: #fff;
+      background: #0B3B3C;
+      font-family: var(--font-heading);
+      font-weight: 900;
+    }
+
+    .compare-cell {
+      display: flex;
+      align-items: center;
+      padding: 18px;
+      border-right: 1px solid #E2E8F0;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .header .compare-cell {
+      color: #fff;
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .compare-cell:last-child { border-right: 0; }
+    .compare-cell strong { color: var(--pj-ink); }
+    .header .compare-cell strong { color: #fff; }
+
+    .use-cases {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .case-card {
+      min-height: 220px;
+      padding: 22px;
+      border-radius: 24px;
+      color: #fff;
+      background: var(--bg);
+    }
+
+    .case-card i { margin-bottom: 18px; color: var(--pj-lime); }
+
+    .case-card h3 {
+      color: #fff;
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .case-card p {
+      color: rgba(255,255,255,0.76);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .pj-cta {
+      padding: 78px 24px;
+      background: #ECFDF5;
+    }
+
+    .pj-cta-box {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 34px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(163,230,53,0.22), transparent 30%),
+        linear-gradient(135deg, #061A1B, #0B3B3C);
+      box-shadow: 0 24px 70px rgba(15,23,42,0.18);
+    }
+
+    .pj-cta h2 {
+      max-width: 780px;
+      color: #fff;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1;
+    }
+
+    .pj-cta p {
+      max-width: 700px;
+      margin-top: 14px;
+      color: #CBD5E1;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      .pj-hero-shell,
+      .section-wide,
+      .journey,
+      .pj-cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .pj-receipt { margin-bottom: 0; }
+      .hero-proof,
+      .offer-grid,
+      .use-cases { grid-template-columns: repeat(2, 1fr); }
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-cell { border-right: 0; border-bottom: 1px solid #E2E8F0; }
+      .compare-cell:last-child { border-bottom: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .pj-hero { padding: 92px 18px 0; }
+      .hero-proof,
+      .offer-grid,
+      .use-cases {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-item { border-right: 0; border-bottom: 1px solid var(--pj-line); }
+      .proof-item:last-child { border-bottom: 0; }
+      .pj-section { padding: 62px 18px; }
+      .journey { gap: 28px; }
+      .journey-step { grid-template-columns: 44px 1fr; padding: 14px; }
+      .journey-number { width: 44px; height: 44px; }
+      .pj-actions .btn,
+      .pj-cta .btn { width: 100%; }
+      .pj-cta-box,
+      .pj-receipt { padding: 24px; border-radius: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <nav><ul class="nav-links">
+        <li><a href="conta-digital.html">Conta Digital</a></li>
+        <li><a href="cartao.html">Cartao</a></li>
+        <li><a href="credito.html">Credito</a></li>
+        <li><a href="investimentos.html">Investimentos</a></li>
+        <li><a href="seguros.html">Seguros</a></li>
+        <li><a class="active" href="empresas.html">Empresas</a></li>
+      </ul></nav>
+      <a class="btn btn-primary" href="#abrir-pj">Abrir PJ</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="pj-hero">
+      <div class="pj-hero-shell">
+        <div>
+          <div class="pj-kicker"><i data-lucide="building-2"></i> Conta PJ Fintechzada</div>
+          <h1>Conta de empresa para receber, pagar e crescer com menos friccao.</h1>
+          <p>Uma oferta PJ direta: conta sem mensalidade essencial, Pix, boletos, cobranca, cartoes corporativos e atendimento para empresas que querem organizar o financeiro sem montar uma operacao complexa.</p>
+          <div class="pj-actions">
+            <a class="btn btn-primary btn-lg" href="#abrir-pj">Abrir conta PJ</a>
+            <a class="btn btn-ghost btn-lg" href="#comparar">Comparar recursos</a>
+          </div>
+        </div>
+
+        <aside class="pj-receipt" aria-label="Resumo da Conta PJ">
+          <div class="receipt-top">
+            <img src="fintechzada-logo.png" alt="Fintechzada">
+            <span class="receipt-status">PJ pronta para abrir</span>
+          </div>
+          <div class="receipt-title">
+            <span>Pacote inicial</span>
+            <strong>Conta PJ</strong>
+          </div>
+          <div class="receipt-lines">
+            <div class="receipt-line"><span>Manutencao</span><strong>R$ 0 no plano essencial</strong></div>
+            <div class="receipt-line"><span>Recebimento</span><strong>Pix, boleto e link</strong></div>
+            <div class="receipt-line"><span>Cartoes</span><strong>Fisico, virtual e equipe</strong></div>
+            <div class="receipt-line"><span>Gestao</span><strong>Permissoes e relatorios</strong></div>
+            <div class="receipt-line"><span>Suporte</span><strong>Atendimento PJ</strong></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof-item"><strong>Pix PJ</strong><span>Chaves, pagamentos, recebimentos e comprovantes organizados.</span></div>
+        <div class="proof-item"><strong>Cobranca</strong><span>Links, boletos e conciliacao para rotina comercial.</span></div>
+        <div class="proof-item"><strong>Equipe</strong><span>Cartoes e permissoes por pessoa, area ou responsabilidade.</span></div>
+        <div class="proof-item"><strong>Relatorios</strong><span>Extratos e exportacoes para controle financeiro e contabilidade.</span></div>
+      </div>
+    </section>
+
+    <section class="pj-section">
+      <div class="section-wide">
+        <div>
+          <div class="pj-kicker"><i data-lucide="package-check"></i> O que vem na conta</div>
+          <h2>O basico bem feito, com espaco para a empresa evoluir.</h2>
+        </div>
+        <p>A Conta PJ foi redesenhada aqui como produto, nao como tela ficticia. A pagina explica o que a empresa contrata, para que serve e como cada recurso ajuda no dia a dia.</p>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer-card" style="--tone:#0F766E">
+          <div class="offer-icon"><i data-lucide="landmark"></i></div>
+          <h3>Conta e pagamentos</h3>
+          <p>Movimente o caixa da empresa com Pix, boleto, transferencias e comprovantes.</p>
+          <ul class="offer-list">
+            <li><i data-lucide="check"></i> Pix com chaves PJ</li>
+            <li><i data-lucide="check"></i> Pagamentos agendados</li>
+            <li><i data-lucide="check"></i> Extrato por periodo</li>
+          </ul>
+        </article>
+        <article class="offer-card dark" style="--tone:#A3E635">
+          <div class="offer-icon"><i data-lucide="qr-code"></i></div>
+          <h3>Cobranca comercial</h3>
+          <p>Receba de clientes por link, Pix ou boleto, com acompanhamento por status.</p>
+          <ul class="offer-list">
+            <li><i data-lucide="check"></i> Link de pagamento</li>
+            <li><i data-lucide="check"></i> Boleto com vencimento</li>
+            <li><i data-lucide="check"></i> Baixa e conciliacao</li>
+          </ul>
+        </article>
+        <article class="offer-card" style="--tone:#2563EB">
+          <div class="offer-icon"><i data-lucide="wallet-cards"></i></div>
+          <h3>Cartoes corporativos</h3>
+          <p>Separe gastos da empresa, compras online e despesas de equipe.</p>
+          <ul class="offer-list">
+            <li><i data-lucide="check"></i> Cartao virtual PJ</li>
+            <li><i data-lucide="check"></i> Limites por usuario</li>
+            <li><i data-lucide="check"></i> Recibos por compra</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="pj-section soft">
+      <div class="journey">
+        <div class="pj-copy">
+          <div class="pj-kicker"><i data-lucide="route"></i> Abertura</div>
+          <h2>Uma jornada de abertura que nao tenta parecer mais complicada do que e.</h2>
+          <p>A empresa informa CNPJ, socios, atividade e documentos. Depois da validacao cadastral, a conta e liberada com os recursos iniciais e pode receber configuracoes adicionais.</p>
+          <div class="pj-actions">
+            <a class="btn btn-primary btn-lg" href="#abrir-pj">Comecar abertura</a>
+          </div>
+        </div>
+        <div class="journey-steps">
+          <article class="journey-step"><div class="journey-number"></div><div><h3>Dados da empresa</h3><p>CNPJ, razao social, atividade, endereco e informacoes de faturamento.</p></div></article>
+          <article class="journey-step"><div class="journey-number"></div><div><h3>Socios e responsaveis</h3><p>Validacao das pessoas autorizadas a movimentar e administrar a conta.</p></div></article>
+          <article class="journey-step"><div class="journey-number"></div><div><h3>Analise cadastral</h3><p>Checagens de seguranca, compliance e compatibilidade com os produtos PJ.</p></div></article>
+          <article class="journey-step"><div class="journey-number"></div><div><h3>Conta liberada</h3><p>Pix, cobranca e cartao virtual podem ser configurados conforme o perfil aprovado.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pj-section" id="comparar">
+      <div class="section-wide">
+        <div>
+          <div class="pj-kicker"><i data-lucide="list-checks"></i> Recursos</div>
+          <h2>Compare o que a Conta PJ resolve em cada etapa.</h2>
+        </div>
+        <p>Em vez de simular uma interface inexistente, a pagina deixa claro o escopo do produto: conta, cobranca, equipe e operacao financeira.</p>
+      </div>
+
+      <div class="compare-table" aria-label="Comparativo de recursos da Conta PJ">
+        <div class="compare-row header">
+          <div class="compare-cell"><strong>Necessidade</strong></div>
+          <div class="compare-cell"><strong>Essencial</strong></div>
+          <div class="compare-cell"><strong>Crescimento</strong></div>
+          <div class="compare-cell"><strong>Operacao</strong></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><strong>Receber clientes</strong></div>
+          <div class="compare-cell">Pix PJ</div>
+          <div class="compare-cell">Pix + boleto + link</div>
+          <div class="compare-cell">Cobranca recorrente e conciliacao</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><strong>Pagar fornecedores</strong></div>
+          <div class="compare-cell">Pagamentos avulsos</div>
+          <div class="compare-cell">Agendamento e comprovantes</div>
+          <div class="compare-cell">Aprovacao e centros de custo</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><strong>Controlar equipe</strong></div>
+          <div class="compare-cell">Usuario responsavel</div>
+          <div class="compare-cell">Usuarios adicionais</div>
+          <div class="compare-cell">Papeis, limites e trilha de auditoria</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell"><strong>Organizar dados</strong></div>
+          <div class="compare-cell">Extrato</div>
+          <div class="compare-cell">Relatorios por periodo</div>
+          <div class="compare-cell">Exportacoes para contabilidade</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pj-section soft">
+      <div class="section-wide">
+        <div>
+          <div class="pj-kicker"><i data-lucide="briefcase-business"></i> Para quem</div>
+          <h2>Conta PJ para realidades diferentes de empresa.</h2>
+        </div>
+        <p>O posicionamento fica amplo sem virar generico: cada perfil entende rapidamente por que abrir uma conta empresarial separada da vida pessoal.</p>
+      </div>
+
+      <div class="use-cases">
+        <article class="case-card" style="--bg:linear-gradient(135deg,#061A1B,#0B3B3C)"><i data-lucide="store"></i><h3>Comercio</h3><p>Receba por Pix, boleto e link, acompanhe vendas e separe despesas da loja.</p></article>
+        <article class="case-card" style="--bg:linear-gradient(135deg,#0F766E,#0B3B3C)"><i data-lucide="laptop"></i><h3>Servicos</h3><p>Cobre clientes, envie comprovantes e organize recebimentos recorrentes.</p></article>
+        <article class="case-card" style="--bg:linear-gradient(135deg,#2563EB,#0B3B3C)"><i data-lucide="users"></i><h3>Equipes</h3><p>Distribua cartoes, limites e acessos sem compartilhar uma unica senha.</p></article>
+        <article class="case-card" style="--bg:linear-gradient(135deg,#F59E0B,#0B3B3C)"><i data-lucide="file-spreadsheet"></i><h3>Gestao</h3><p>Exporte extratos e relatorios para fechar mes, impostos e contabilidade.</p></article>
+      </div>
+    </section>
+
+    <section class="pj-cta" id="abrir-pj">
+      <div class="pj-cta-box">
+        <div>
+          <h2>Abra uma Conta PJ sem inventar complexidade.</h2>
+          <p>Comece com conta, Pix e cobranca. Ative cartoes, usuarios, relatorios e recursos adicionais conforme a empresa precisar.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="#">Solicitar abertura</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="compliance"><div class="compliance-inner">A Conta PJ e oferecida pela Fintechzada S/A, instituicao de pagamento autorizada pelo Bacen. Cartoes, credito, cobranca, limites e recursos adicionais podem estar sujeitos a analise cadastral, regras operacionais e disponibilidade por perfil de empresa.</div></div>
+  <div id="site-footer"></div>
+  <script src="product.js"></script>
+</body>
+</html>

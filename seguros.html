@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintechzada Seguros | Protecao digital</title>
+  <meta name="description" content="Fintechzada Seguros: protecao para auto, vida, residencial e MEI com cotacao, apolice e assistencia pelo app.">
+  <link rel="icon" href="fintechzada-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --insurance-paper: #FBFEFC;
+      --insurance-mint: #ECFDF5;
+      --insurance-line: #D7E9E2;
+      --insurance-ink: #102326;
+      --insurance-teal: #0F766E;
+      --insurance-green: #16A34A;
+      --insurance-lime: #A3E635;
+      --insurance-blue: #2563EB;
+      --insurance-amber: #F59E0B;
+    }
+
+    .nav .btn-primary,
+    .btn-primary {
+      background: linear-gradient(135deg, #0B3B3C, #0F766E);
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.22);
+    }
+
+    .insurance-portal {
+      padding: 118px 24px 42px;
+      background:
+        linear-gradient(90deg, rgba(15,118,110,0.08) 1px, transparent 1px),
+        linear-gradient(180deg, #F8FFFC 0%, #ECFDF5 66%, #fff 100%);
+      background-size: 74px 100%, auto;
+      overflow: hidden;
+    }
+
+    .portal-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1.06fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .portal-copy h1 {
+      max-width: 720px;
+      color: var(--insurance-ink);
+      font-size: clamp(42px, 5.7vw, 76px);
+      line-height: 0.98;
+    }
+
+    .portal-copy p {
+      max-width: 620px;
+      margin-top: 22px;
+      color: #4B6470;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .portal-eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      color: #0B3B3C;
+      background: rgba(15, 118, 110, 0.09);
+      border: 1px solid rgba(15, 118, 110, 0.16);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .portal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .portal-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .portal-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 0 12px;
+      border-radius: 12px;
+      color: #29464B;
+      background: #fff;
+      border: 1px solid var(--insurance-line);
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+    }
+
+    .quote-console {
+      position: relative;
+      padding: 18px;
+      border-radius: 32px;
+      background: #fff;
+      border: 1px solid rgba(15, 118, 110, 0.14);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12);
+    }
+
+    .quote-console::before {
+      content: "";
+      position: absolute;
+      inset: 16px -26px auto auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 36px;
+      background: linear-gradient(135deg, rgba(163,230,53,0.38), rgba(20,184,166,0.16));
+      transform: rotate(12deg);
+      z-index: 0;
+    }
+
+    .quote-card {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--insurance-line);
+      background: var(--insurance-paper);
+    }
+
+    .quote-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px;
+      background: linear-gradient(135deg, #0B3B3C, #0F766E);
+      color: #fff;
+    }
+
+    .quote-top strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 22px;
+    }
+
+    .quote-top span {
+      display: block;
+      margin-top: 5px;
+      color: #CCFBF1;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .quote-price {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .quote-price b {
+      display: block;
+      color: var(--insurance-lime);
+      font-family: var(--font-heading);
+      font-size: 28px;
+    }
+
+    .quote-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 14px;
+      background: #F1F8F5;
+      border-bottom: 1px solid var(--insurance-line);
+    }
+
+    .quote-tabs button {
+      min-height: 42px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      background: #fff;
+      color: #405B62;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .quote-tabs button:first-child {
+      color: #fff;
+      background: var(--insurance-teal);
+      box-shadow: 0 10px 24px rgba(15,118,110,0.18);
+    }
+
+    .quote-form {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .quote-field {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--insurance-line);
+    }
+
+    .quote-field label {
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .quote-field strong {
+      color: var(--insurance-ink);
+      font-family: var(--font-heading);
+      font-size: 17px;
+    }
+
+    .quote-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0 18px 18px;
+    }
+
+    .quote-benefits div {
+      min-height: 82px;
+      padding: 12px;
+      border-radius: 16px;
+      background: #ECFDF5;
+      border: 1px solid #CDEFE3;
+      color: #0B3B3C;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .quote-benefits i {
+      margin-bottom: 8px;
+      color: var(--insurance-green);
+    }
+
+    .quote-ribbon {
+      padding: 0 24px;
+      margin-top: -4px;
+      background: #fff;
+    }
+
+    .ribbon-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--insurance-line);
+      background: #fff;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    .ribbon-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 94px;
+      padding: 18px;
+      border-right: 1px solid var(--insurance-line);
+    }
+
+    .ribbon-item:last-child { border-right: 0; }
+
+    .ribbon-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 50%;
+      color: #0B3B3C;
+      background: var(--insurance-lime);
+      font-weight: 950;
+    }
+
+    .ribbon-item strong {
+      display: block;
+      color: var(--insurance-ink);
+      font-family: var(--font-heading);
+      font-size: 15px;
+    }
+
+    .ribbon-item span {
+      display: block;
+      margin-top: 3px;
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.35;
+    }
+
+    .scenario-section {
+      padding: 92px 24px;
+      background: #fff;
+    }
+
+    .section-head-wide {
+      max-width: 1240px;
+      margin: 0 auto 34px;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 44px;
+      align-items: end;
+    }
+
+    .section-head-wide h2 {
+      color: var(--insurance-ink);
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1;
+    }
+
+    .section-head-wide p {
+      color: #64748B;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .scenario-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .scenario-card {
+      min-height: 240px;
+      grid-column: span 2;
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid var(--insurance-line);
+      background: linear-gradient(180deg, #fff, #F8FFFC);
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
+    }
+
+    .scenario-card.large {
+      grid-column: span 3;
+      min-height: 286px;
+      background:
+        radial-gradient(circle at 92% 8%, var(--tone-glow), transparent 34%),
+        linear-gradient(180deg, #fff, #F3FFF9);
+    }
+
+    .scenario-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      color: #fff;
+      background: var(--tone);
+    }
+
+    .scenario-card h3 {
+      color: var(--insurance-ink);
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .scenario-card p {
+      color: #64748B;
+      line-height: 1.55;
+    }
+
+    .scenario-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .scenario-tags span {
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #36565A;
+      background: #F1F8F5;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .policy-room {
+      padding: 88px 24px;
+      background:
+        linear-gradient(180deg, #F8FAFC, #EEF9F4);
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .policy-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1.08fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .policy-sheet {
+      position: relative;
+      padding: 30px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid #D8E5DF;
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.11);
+    }
+
+    .policy-sheet::before {
+      content: "";
+      position: absolute;
+      inset: 18px 18px auto auto;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 10px solid rgba(15, 118, 110, 0.14);
+    }
+
+    .sheet-title {
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .sheet-title span {
+      display: block;
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .sheet-title strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--insurance-ink);
+      font-family: var(--font-heading);
+      font-size: 28px;
+    }
+
+    .sheet-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid #EDF2F7;
+      color: #405B62;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .sheet-row:last-child { border-bottom: 0; }
+
+    .sheet-row span {
+      color: #64748B;
+      font-weight: 900;
+    }
+
+    .policy-copy h2 {
+      color: var(--insurance-ink);
+      font-size: clamp(34px, 4.6vw, 60px);
+      line-height: 1;
+    }
+
+    .policy-copy p {
+      margin-top: 18px;
+      color: #64748B;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .policy-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .policy-point {
+      min-height: 116px;
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--insurance-line);
+    }
+
+    .policy-point i {
+      color: var(--insurance-teal);
+      margin-bottom: 10px;
+    }
+
+    .policy-point strong {
+      display: block;
+      color: var(--insurance-ink);
+      font-family: var(--font-heading);
+      margin-bottom: 5px;
+    }
+
+    .policy-point span {
+      color: #64748B;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .assistance-section {
+      padding: 92px 24px;
+      background: #fff;
+    }
+
+    .assistance-board {
+      max-width: 1240px;
+      margin: 34px auto 0;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .service-ticket {
+      padding: 28px;
+      border-radius: 28px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(163,230,53,0.22), transparent 30%),
+        linear-gradient(135deg, #061A1B, #0B3B3C);
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.16);
+    }
+
+    .ticket-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 999px;
+      color: #D1FAE5;
+      background: rgba(255,255,255,0.1);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .service-ticket h3 {
+      max-width: 440px;
+      margin-top: 58px;
+      color: #fff;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+    }
+
+    .service-ticket p {
+      max-width: 480px;
+      margin-top: 16px;
+      color: #CBD5E1;
+      line-height: 1.55;
+    }
+
+    .ticket-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .ticket-meta div {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .ticket-meta span {
+      display: block;
+      color: #94A3B8;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .ticket-meta strong {
+      display: block;
+      margin-top: 5px;
+      color: #fff;
+      font-family: var(--font-heading);
+    }
+
+    .service-lanes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .lane {
+      min-height: 198px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--insurance-line);
+      background: #F8FFFC;
+    }
+
+    .lane-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .lane-head strong {
+      color: var(--insurance-ink);
+      font-family: var(--font-heading);
+    }
+
+    .lane-head span {
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .lane-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 13px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      color: #405B62;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .lane-card + .lane-card { margin-top: 10px; }
+    .lane-card i { color: var(--insurance-green); flex-shrink: 0; }
+
+    .insurance-cta {
+      padding: 78px 24px;
+      background: #ECFDF5;
+    }
+
+    .insurance-cta-box {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 34px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(163,230,53,0.22), transparent 30%),
+        linear-gradient(135deg, #061A1B, #0B3B3C);
+      box-shadow: 0 24px 70px rgba(15,23,42,0.18);
+    }
+
+    .insurance-cta h2 {
+      max-width: 760px;
+      color: #fff;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1;
+    }
+
+    .insurance-cta p {
+      max-width: 680px;
+      margin-top: 14px;
+      color: #CBD5E1;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      .portal-shell,
+      .section-head-wide,
+      .policy-layout,
+      .assistance-board,
+      .insurance-cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .ribbon-inner,
+      .policy-points,
+      .service-lanes {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .scenario-card,
+      .scenario-card.large {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .insurance-portal { padding: 92px 18px 34px; }
+      .quote-console { padding: 12px; border-radius: 24px; }
+      .quote-top,
+      .quote-benefits,
+      .ribbon-inner,
+      .policy-points,
+      .service-lanes,
+      .ticket-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-tabs { grid-template-columns: repeat(2, 1fr); }
+      .quote-top { display: grid; }
+      .quote-price { text-align: left; }
+      .quote-ribbon { padding: 0 18px; }
+      .ribbon-item { border-right: 0; border-bottom: 1px solid var(--insurance-line); }
+      .ribbon-item:last-child { border-bottom: 0; }
+      .scenario-section,
+      .policy-room,
+      .assistance-section { padding: 62px 18px; }
+      .scenario-grid { grid-template-columns: 1fr; }
+      .scenario-card,
+      .scenario-card.large { grid-column: span 1; min-height: auto; }
+      .sheet-row { grid-template-columns: 1fr; gap: 6px; }
+      .policy-sheet,
+      .service-ticket,
+      .insurance-cta-box { padding: 24px; border-radius: 24px; }
+      .portal-actions .btn,
+      .insurance-cta .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <nav><ul class="nav-links">
+        <li><a href="conta-digital.html">Conta Digital</a></li>
+        <li><a href="cartao.html">Cartao</a></li>
+        <li><a href="credito.html">Credito</a></li>
+        <li><a href="investimentos.html">Investimentos</a></li>
+        <li><a class="active" href="seguros.html">Seguros</a></li>
+        <li><a href="empresas.html">Empresas</a></li>
+      </ul></nav>
+      <a class="btn btn-primary" href="#cotar">Cotar</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="insurance-portal">
+      <div class="portal-shell">
+        <div class="portal-copy">
+          <div class="portal-eyebrow"><i data-lucide="shield-check"></i> Fintechzada Seguros</div>
+          <h1>Seguro para resolver o imprevisto sem sair do fluxo.</h1>
+          <p>Auto, vida, residencial e MEI com cotacao clara, apolice digital e acionamento guiado pelo app. A ideia e simples: voce entende o que esta contratando antes de precisar usar.</p>
+          <div class="portal-actions">
+            <a class="btn btn-primary btn-lg" href="#cotar">Simular protecao</a>
+            <a class="btn btn-ghost btn-lg" href="#coberturas">Ver situacoes</a>
+          </div>
+          <div class="portal-proof">
+            <span><i data-lucide="file-check-2"></i> Apolice no app</span>
+            <span><i data-lucide="headphones"></i> Assistencia guiada</span>
+            <span><i data-lucide="badge-check"></i> Condicoes visiveis</span>
+          </div>
+        </div>
+
+        <aside class="quote-console" aria-label="Simulacao de seguro">
+          <div class="quote-card">
+            <div class="quote-top">
+              <div>
+                <strong>Cotacao rapida</strong>
+                <span>Compare cobertura, franquia e assistencia</span>
+              </div>
+              <div class="quote-price">
+                <span>a partir de</span>
+                <b>R$ 39,90</b>
+              </div>
+            </div>
+            <div class="quote-tabs" role="tablist" aria-label="Tipos de seguro">
+              <button type="button">Auto</button>
+              <button type="button">Vida</button>
+              <button type="button">Casa</button>
+              <button type="button">MEI</button>
+            </div>
+            <div class="quote-form">
+              <div class="quote-field">
+                <label>O que voce quer proteger?</label>
+                <strong>Honda City 2023</strong>
+              </div>
+              <div class="quote-field">
+                <label>Perfil de uso</label>
+                <strong>Rotina urbana, garagem coberta</strong>
+              </div>
+              <div class="quote-field">
+                <label>Prioridade</label>
+                <strong>Terceiros + assistencia 24h</strong>
+              </div>
+            </div>
+            <div class="quote-benefits">
+              <div><i data-lucide="truck"></i>Guincho e suporte emergencial</div>
+              <div><i data-lucide="users"></i>Cobertura para terceiros</div>
+              <div><i data-lucide="smartphone"></i>Acompanhamento no app</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="quote-ribbon" aria-label="Etapas para contratar">
+      <div class="ribbon-inner">
+        <div class="ribbon-item"><div class="ribbon-number">1</div><div><strong>Cotar</strong><span>Informe o bem ou pessoa protegida.</span></div></div>
+        <div class="ribbon-item"><div class="ribbon-number">2</div><div><strong>Comparar</strong><span>Veja preco, cobertura e exclusoes.</span></div></div>
+        <div class="ribbon-item"><div class="ribbon-number">3</div><div><strong>Contratar</strong><span>Confirme os dados e receba a apolice.</span></div></div>
+        <div class="ribbon-item"><div class="ribbon-number">4</div><div><strong>Acionar</strong><span>Abra assistencia com contexto pronto.</span></div></div>
+      </div>
+    </section>
+
+    <section class="scenario-section" id="coberturas">
+      <div class="section-head-wide">
+        <div>
+          <div class="section-kicker"><i data-lucide="map"></i> Situacoes reais</div>
+          <h2>Coberturas pensadas por momento, nao por contrato confuso.</h2>
+        </div>
+        <p>A pagina de seguros funciona como um mapa de protecao: voce escolhe o que pode dar errado, entende qual produto cobre aquilo e compara os limites antes de contratar.</p>
+      </div>
+
+      <div class="scenario-grid">
+        <article class="scenario-card large" style="--tone:#0F766E;--tone-glow:rgba(15,118,110,0.14)">
+          <div class="scenario-icon"><i data-lucide="car"></i></div>
+          <h3>Bateu o carro ou ficou parado?</h3>
+          <p>Seguro auto com assistencia 24h, guincho, cobertura para terceiros e acompanhamento do sinistro no app.</p>
+          <div class="scenario-tags"><span>guincho</span><span>terceiros</span><span>vistoria digital</span></div>
+        </article>
+        <article class="scenario-card large" style="--tone:#16A34A;--tone-glow:rgba(22,163,74,0.14)">
+          <div class="scenario-icon"><i data-lucide="home"></i></div>
+          <h3>Deu problema em casa?</h3>
+          <p>Protecao residencial para danos eletricos, incendio e assistencias como chaveiro, hidraulica e eletrica.</p>
+          <div class="scenario-tags"><span>chaveiro</span><span>dano eletrico</span><span>assistencia</span></div>
+        </article>
+        <article class="scenario-card" style="--tone:#2563EB;--tone-glow:rgba(37,99,235,0.12)">
+          <div class="scenario-icon"><i data-lucide="heart-pulse"></i></div>
+          <h3>Quem depende de voce precisa de previsibilidade?</h3>
+          <p>Seguro vida com beneficiarios no app, coberturas conforme plano e assistencia opcional.</p>
+          <div class="scenario-tags"><span>vida</span><span>beneficiarios</span></div>
+        </article>
+        <article class="scenario-card" style="--tone:#F59E0B;--tone-glow:rgba(245,158,11,0.12)">
+          <div class="scenario-icon"><i data-lucide="briefcase-business"></i></div>
+          <h3>Seu trabalho precisa continuar?</h3>
+          <p>Planos MEI para equipamentos, responsabilidade civil e riscos da rotina autonoma.</p>
+          <div class="scenario-tags"><span>MEI</span><span>equipamentos</span></div>
+        </article>
+        <article class="scenario-card" style="--tone:#0EA5E9;--tone-glow:rgba(14,165,233,0.12)">
+          <div class="scenario-icon"><i data-lucide="message-circle-warning"></i></div>
+          <h3>Nao quer procurar telefone na hora ruim?</h3>
+          <p>A central mostra o produto contratado, quais documentos enviar e o proximo passo do atendimento.</p>
+          <div class="scenario-tags"><span>central no app</span><span>checklist</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="policy-room">
+      <div class="policy-layout">
+        <aside class="policy-sheet" aria-label="Resumo de apolice">
+          <div class="sheet-title">
+            <span>Resumo da apolice</span>
+            <strong>Residencial Essencial</strong>
+          </div>
+          <div class="sheet-row"><span>Bem protegido</span><strong>Apartamento em Sao Paulo, SP</strong></div>
+          <div class="sheet-row"><span>Cobertura</span><strong>Incendio, danos eletricos, responsabilidade familiar e assistencias.</strong></div>
+          <div class="sheet-row"><span>Atencao</span><strong>Itens fora do endereco cadastrado nao entram nesta apolice.</strong></div>
+          <div class="sheet-row"><span>Assistencia</span><strong>Chaveiro, eletrica e hidraulica, conforme limite do plano.</strong></div>
+          <div class="sheet-row"><span>Pagamento</span><strong>Mensal integrado a Conta Digital Fintechzada.</strong></div>
+        </aside>
+
+        <div class="policy-copy">
+          <div class="section-kicker"><i data-lucide="file-text"></i> Apolice sem nevoa</div>
+          <h2>A parte importante aparece antes do botao de contratar.</h2>
+          <p>Cobertura, franquia, carencia, exclusoes e assistencia ficam em linguagem direta. A letrinha continua existindo, mas a decisao nao depende de adivinhar onde ela esta.</p>
+          <div class="policy-points">
+            <div class="policy-point"><i data-lucide="search-check"></i><strong>Resumo visual</strong><span>O app destaca o que cobre e o que nao cobre.</span></div>
+            <div class="policy-point"><i data-lucide="calendar-clock"></i><strong>Vigencia clara</strong><span>Datas, renovacao e carencia em primeiro plano.</span></div>
+            <div class="policy-point"><i data-lucide="wallet-cards"></i><strong>Pagamento integrado</strong><span>Cobranca e historico junto da Conta Digital.</span></div>
+            <div class="policy-point"><i data-lucide="rotate-ccw"></i><strong>Gestao simples</strong><span>Segunda via, cancelamento e atualizacao pelo app.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assistance-section">
+      <div class="section-head-wide">
+        <div>
+          <div class="section-kicker"><i data-lucide="headphones"></i> Central de assistencia</div>
+          <h2>Quando aciona, vira atendimento acompanhado.</h2>
+        </div>
+        <p>Em vez de uma timeline abstrata, a experiencia parece um quadro de suporte: cada pedido tem status, responsavel, documentos e prazo visiveis.</p>
+      </div>
+
+      <div class="assistance-board">
+        <article class="service-ticket">
+          <div class="ticket-status"><i data-lucide="circle-dot"></i> Atendimento em andamento</div>
+          <h3>Guincho solicitado na Marginal Pinheiros.</h3>
+          <p>O cliente informa localizacao, veiculo e foto do painel. O app ja conecta apolice, cobertura ativa e prestador disponivel.</p>
+          <div class="ticket-meta">
+            <div><span>Previsao</span><strong>38 min</strong></div>
+            <div><span>Canal</span><strong>App + WhatsApp</strong></div>
+            <div><span>Apolice</span><strong>Auto Completo</strong></div>
+            <div><span>Status</span><strong>Prestador a caminho</strong></div>
+          </div>
+        </article>
+
+        <div class="service-lanes">
+          <div class="lane">
+            <div class="lane-head"><strong>Aberto</strong><span>2 pedidos</span></div>
+            <div class="lane-card"><i data-lucide="file-up"></i> Enviar boletim ou relato do ocorrido</div>
+            <div class="lane-card"><i data-lucide="camera"></i> Adicionar fotos do dano</div>
+          </div>
+          <div class="lane">
+            <div class="lane-head"><strong>Em analise</strong><span>1 pedido</span></div>
+            <div class="lane-card"><i data-lucide="scan-line"></i> Validacao de cobertura e franquia</div>
+          </div>
+          <div class="lane">
+            <div class="lane-head"><strong>Assistencia enviada</strong><span>1 pedido</span></div>
+            <div class="lane-card"><i data-lucide="truck"></i> Prestador confirmado com rota</div>
+          </div>
+          <div class="lane">
+            <div class="lane-head"><strong>Resolvido</strong><span>historico</span></div>
+            <div class="lane-card"><i data-lucide="check-check"></i> Protocolo, documentos e avaliacao salvos</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="insurance-cta" id="cotar">
+      <div class="insurance-cta-box">
+        <div>
+          <h2>Escolha o que proteger e compare planos no app.</h2>
+          <p>Auto, vida, residencial e MEI com informacoes claras antes da contratacao e suporte integrado depois.</p>
+        </div>
+        <a class="btn btn-primary btn-lg" href="#">Cotar agora</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="compliance"><div class="compliance-inner">Os seguros sao comercializados pela Fintechzada Seguros S/A, autorizada pela SUSEP. As condicoes de cobertura, franquia, carencia e exclusoes constam na apolice e no material informativo de cada produto.</div></div>
+  <div id="site-footer"></div>
+  <script src="product.js"></script>
+</body>
+</html>
