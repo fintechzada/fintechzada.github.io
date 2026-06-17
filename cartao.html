@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="product-atmosphere.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root { --page-accent: #A3E635; --page-accent-dim: rgba(163,230,53,0.18); }
@@ -24,12 +25,115 @@
     .tier-black .tier-label { background: rgba(163,230,53,0.16); color: #BEF264; }
     /* Sutil glow no cartão black */
     .tier-black { box-shadow: 0 18px 48px rgba(6,26,27,0.14), 0 0 0 1px rgba(163,230,53,0.12); }
+
+    .card-hero-inner > div:first-child {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hero: leque de cartões */
+    .card-hero-stack {
+      perspective: 1400px;
+      cursor: default;
+      min-height: 440px;
+      justify-items: center;
+      padding-right: 8px;
+      overflow: visible;
+    }
+
+    .stack-card {
+      opacity: 1;
+      cursor: pointer;
+      width: min(248px, 34vw);
+      max-height: 380px;
+      transform-origin: 62% 88%;
+      transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    }
+
+    .stack-card-back {
+      transform: translate(-48px, 14px) rotate(-14deg) scale(0.82);
+      z-index: 1;
+    }
+
+    .stack-card-mid {
+      transform: translate(36px, 4px) rotate(4deg) scale(0.86);
+      z-index: 2;
+    }
+
+    .stack-card-front {
+      transform: translate(96px, 16px) rotate(12deg) scale(0.88);
+      z-index: 3;
+    }
+
+    .card-hero-stack:hover .stack-card-back {
+      transform: translate(-72px, 8px) rotate(-24deg) scale(0.84);
+    }
+
+    .card-hero-stack:hover .stack-card-mid {
+      transform: translate(48px, -16px) rotate(0deg) scale(0.87);
+    }
+
+    .card-hero-stack:hover .stack-card-front {
+      transform: translate(132px, 8px) rotate(24deg) scale(0.84);
+    }
+
+    .card-hero-stack .stack-card:hover {
+      z-index: 10;
+      filter: drop-shadow(0 32px 52px rgba(0, 0, 0, 0.46));
+    }
+
+    .card-hero-stack:hover .stack-card-back:hover {
+      transform: translate(-84px, -8px) rotate(-26deg) scale(0.9);
+    }
+
+    .card-hero-stack:hover .stack-card-mid:hover {
+      transform: translate(48px, -28px) rotate(0deg) scale(0.92);
+    }
+
+    .card-hero-stack:hover .stack-card-front:hover {
+      transform: translate(144px, -8px) rotate(26deg) scale(0.9);
+    }
+
+    .card-hero-stack .stack-card-back:hover {
+      transform: translate(-56px, 6px) rotate(-16deg) scale(0.86);
+      z-index: 10;
+      filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.42));
+    }
+
+    .card-hero-stack .stack-card-mid:hover {
+      transform: translate(36px, -8px) rotate(4deg) scale(0.89);
+      z-index: 10;
+      filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.42));
+    }
+
+    .card-hero-stack .stack-card-front:hover {
+      transform: translate(104px, 10px) rotate(14deg) scale(0.9);
+      z-index: 10;
+      filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.42));
+    }
+
+    /* Showcase: hover leve em cada cartão */
+    .tier-media img {
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+    }
+
+    .tier-card:hover .tier-media img {
+      transform: translateY(-12px) scale(1.05);
+      filter: drop-shadow(0 26px 44px rgba(6, 26, 27, 0.3));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stack-card,
+      .tier-media img {
+        transition: none;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="page-cartao">
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"><span class="brand-copy"><span class="brand-name">Fintechzada</span><span class="brand-tagline">S/A</span></span></a>
       <nav><ul class="nav-links">
         <li><a href="conta-digital.html">Conta Digital</a></li>
         <li><a class="active" href="cartao.html">Cartão</a></li>
@@ -38,12 +142,12 @@
         <li><a href="seguros.html">Seguros</a></li>
         <li><a href="empresas.html">Empresas</a></li>
       </ul></nav>
-      <a class="btn btn-primary" href="#pedir">Pedir cartão</a>
+      <div class="nav-actions"><a class="btn btn-ghost nav-login" href="#"><i data-lucide="log-in"></i>Entrar</a><a class="btn btn-primary" href="#pedir">Pedir cartão</a></div>
     </div>
   </header>
 
   <main>
-    <section class="hero card-hero" style="--hero-image:linear-gradient(135deg, #061A1B, #0F2A2B 58%, #0B3B3C)">
+    <section class="hero card-hero">
       <div class="hero-inner card-hero-inner">
         <div>
           <div class="eyebrow"><i data-lucide="credit-card"></i> Cartões Fintechzada Viza</div>

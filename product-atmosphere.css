@@ -1,0 +1,258 @@
+/* Integração das páginas de produto com a nav premium (index) — não altera a navbar */
+
+:root {
+  --nav-clearance: 108px;
+}
+
+/* ── Conta Digital: hero sob a nav, fundo contínuo (sem faixa escura) ── */
+body.page-conta {
+  --nav-stack: 90px; /* padding-top nav + altura nav-inner */
+  background: #ECFDF5;
+}
+
+body.page-conta main {
+  margin-top: calc(-1 * var(--nav-stack));
+}
+
+body.page-conta .hero {
+  min-height: 720px;
+  padding: calc(var(--nav-stack) + 32px) 24px 88px;
+  color: #0F172A;
+  position: relative;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 88% 18%, rgba(20, 184, 166, 0.14), transparent),
+    radial-gradient(ellipse 50% 45% at 4% 88%, rgba(6, 182, 212, 0.1), transparent),
+    linear-gradient(165deg, #ECFDF5 0%, #F0FDFA 38%, #F8FAFC 100%);
+}
+
+body.page-conta .hero::before {
+  background: none;
+}
+
+body.page-conta .hero h1 { color: #0F172A; }
+body.page-conta .hero p { color: #334155; }
+body.page-conta .hero .hero-meta { color: #475569; }
+body.page-conta .hero-inner { z-index: 1; }
+
+body.page-conta .cd-stats {
+  margin-top: -36px;
+}
+
+body.page-conta .section:nth-of-type(even) {
+  background: linear-gradient(180deg, #fff, #F8FAFC);
+}
+
+@media (max-width: 640px) {
+  body.page-conta {
+    --nav-stack: 74px;
+  }
+
+  body.page-conta .hero {
+    min-height: auto;
+    padding-bottom: 56px;
+  }
+}
+
+/* ── Cartão: vitrine escura contínua, transição quente para showcase ── */
+body.page-cartao {
+  --nav-stack: 90px;
+  background: #061A1B;
+}
+
+body.page-cartao main {
+  margin-top: calc(-1 * var(--nav-stack));
+}
+
+body.page-cartao .hero.card-hero {
+  min-height: 780px;
+  padding: calc(var(--nav-stack) + 36px) 24px 80px;
+  color: #fff;
+  position: relative;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 58% 72% at 74% 38%, rgba(163, 230, 53, 0.13), transparent),
+    radial-gradient(ellipse 36% 44% at 8% 92%, rgba(20, 184, 166, 0.11), transparent),
+    linear-gradient(180deg, #061A1B 0%, #0A2324 48%, #0F2A2B 100%);
+}
+
+body.page-cartao .hero.card-hero::before {
+  background: linear-gradient(90deg, rgba(6, 26, 27, 0.78) 0%, rgba(6, 26, 27, 0.38) 46%, transparent 72%);
+}
+
+body.page-cartao .card-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* transição longa na 1ª seção — sem overlay no hero */
+body.page-cartao main > .section:first-of-type {
+  background: linear-gradient(
+    180deg,
+    #0F2A2B 0%,
+    #142F30 8%,
+    #1B3637 16%,
+    #243D3E 24%,
+    #2E4647 34%,
+    #3A5152 44%,
+    #4A5F5E 54%,
+    #647572 64%,
+    #869490 76%,
+    #B0BAB6 88%,
+    #E8EDEB 96%,
+    #F2F4F3 100%
+  );
+  padding-top: 96px;
+}
+
+body.page-cartao main > .section:not(:first-of-type) {
+  background: #F2F4F3;
+}
+
+body.page-cartao main > .section.section-soft {
+  background: linear-gradient(180deg, #ECEFEE 0%, #F2F4F3 100%);
+}
+
+body.page-cartao main > .section.section-dark {
+  background:
+    radial-gradient(ellipse 50% 80% at 100% 50%, rgba(163, 230, 53, 0.06), transparent),
+    linear-gradient(135deg, #061A1B 0%, #0B3B3C 100%);
+}
+
+body.page-cartao .cta {
+  background: linear-gradient(135deg, #0B3B3C, #0F766E);
+}
+
+@media (max-width: 640px) {
+  body.page-cartao {
+    --nav-stack: 74px;
+  }
+
+  body.page-cartao .hero.card-hero {
+    min-height: auto;
+    padding-bottom: 72px;
+  }
+}
+
+/* ── Base das demais páginas (revisão pendente) ── */
+body.page-credito {
+  background: #061A1B;
+}
+
+body.page-invest {
+  background: linear-gradient(180deg, #061A1B 0%, #0F2A2B 560px, #F1F5F9 560px, #fff 100%);
+}
+
+body.page-seguros {
+  background: #0B3B3C;
+}
+
+body.page-empresas {
+  background: #EEF9F4;
+}
+
+/* ── Crédito: workspace escuro contínuo com nav ── */
+body.page-credito .cr-workspace {
+  padding: calc(var(--nav-clearance) + 12px) 24px 64px;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body.page-credito .cr-workspace::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 200px;
+  background: linear-gradient(180deg, rgba(6, 26, 27, 0.5), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.page-credito .cr-rail-section {
+  border-top: 1px solid rgba(15, 118, 110, 0.08);
+}
+
+/* ── Investimentos: terminal escuro → corpo editorial claro ── */
+body.page-invest .invest-hero {
+  padding: calc(var(--nav-clearance) + 10px) 24px 70px;
+  background:
+    linear-gradient(180deg, #061A1B 0%, rgba(6, 26, 27, 0.4) 18%, transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(20, 184, 166, 0.22), transparent 28%),
+    radial-gradient(circle at 10% 78%, rgba(163, 230, 53, 0.12), transparent 28%),
+    linear-gradient(135deg, #061A1B, #0F2A2B 52%, #0B3B3C);
+}
+
+body.page-invest .invest-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(6, 26, 27, 0.35), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.page-invest main > :not(.invest-hero) {
+  background: #fff;
+  position: relative;
+}
+
+body.page-invest .goal-section,
+body.page-invest .shelf-section,
+body.page-invest .simulator-section {
+  background: #fff;
+}
+
+body.page-invest .governance-section {
+  background: linear-gradient(180deg, #F8FAFC, #fff);
+}
+
+body.page-seguros .portal-shell {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-empresas .pj-hero-shell {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-empresas .pj-section.soft {
+  background: linear-gradient(180deg, #F8FAFC, #fff);
+}
+
+/* ── Seções alternadas suaves ── */
+body[class^="page-"] .section-soft {
+  background: #F8FAFC;
+}
+
+body.page-conta .section-soft,
+body.page-seguros .section-soft,
+body.page-empresas .section-soft {
+  background: linear-gradient(180deg, #F8FAFC, #fff);
+}
+
+/* Compliance + footer */
+body[class^="page-"] .compliance {
+  background: #F8FAFC;
+  border-top: 1px solid rgba(15, 118, 110, 0.08);
+}
+
+body.page-credito .compliance,
+body.page-cartao .compliance {
+  background: linear-gradient(180deg, #F0FDFA, #F8FAFC);
+}
+
+@media (max-width: 680px) {
+  :root { --nav-clearance: 92px; }
+
+  body.page-credito .cr-workspace {
+    min-height: auto;
+    padding-top: calc(var(--nav-clearance) + 4px);
+  }
+
+  body.page-invest .invest-hero {
+    min-height: auto;
+    padding-bottom: 54px;
+  }
+}

@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="product-atmosphere.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
@@ -25,6 +26,15 @@
       --pj-amber: #F59E0B;
     }
 
+    body.page-empresas {
+      --pj-nav-stack: 90px;
+      background: #EEF9F4;
+    }
+
+    body.page-empresas main {
+      margin-top: calc(-1 * var(--pj-nav-stack));
+    }
+
     .nav .btn-primary,
     .btn-primary {
       background: linear-gradient(135deg, #0B3B3C, #0F766E);
@@ -32,17 +42,62 @@
     }
 
     .pj-hero {
-      padding: 116px 24px 0;
-      background:
-        linear-gradient(90deg, rgba(15,118,110,0.08) 1px, transparent 1px),
-        linear-gradient(180deg, #F7FFFB 0%, #ECFDF5 72%, #fff 72%, #fff 100%);
-      background-size: 76px 100%, auto;
+      position: relative;
+      padding: calc(var(--pj-nav-stack) + 50px) 24px 56px;
       overflow: hidden;
+      background:
+        radial-gradient(ellipse 54% 34% at 52% 8%, rgba(15, 118, 110, 0.14), transparent 72%),
+        radial-gradient(ellipse 36% 32% at 88% 24%, rgba(163, 230, 53, 0.12), transparent 74%),
+        linear-gradient(
+          180deg,
+          #BFE0D4 0%,
+          #C9E8DD 10%,
+          #D4F0E6 20%,
+          #E0F5EE 32%,
+          #E8F9F4 44%,
+          #EEF9F4 56%,
+          #F3FBF8 68%,
+          #F8FAFC 82%,
+          #FFFFFF 100%
+        );
+    }
+
+    .pj-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15,118,110,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,118,110,0.055) 1px, transparent 1px);
+      background-size: 76px 76px;
+      mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.68) 52%, transparent 88%);
+    }
+
+    .pj-hero::after {
+      content: "";
+      position: absolute;
+      top: 48px;
+      right: -140px;
+      width: min(680px, 62vw);
+      height: 420px;
+      pointer-events: none;
+      border-radius: 44px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.64), rgba(255,255,255,0.16)),
+        linear-gradient(90deg, transparent 0 26%, rgba(15,118,110,0.12) 26% 27%, transparent 27% 100%),
+        linear-gradient(180deg, transparent 0 34%, rgba(163,230,53,0.1) 34% 35%, transparent 35% 100%);
+      border: 1px solid rgba(15,118,110,0.1);
+      box-shadow: 0 34px 80px rgba(15, 118, 110, 0.08);
+      transform: rotate(7deg);
+      opacity: 0.72;
     }
 
     .pj-hero-shell {
       max-width: 1240px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: minmax(0, 0.96fr) minmax(360px, 0.78fr);
       gap: 56px;
@@ -62,6 +117,45 @@
       border: 1px solid rgba(15,118,110,0.16);
       font-size: 13px;
       font-weight: 900;
+    }
+
+    /* Legibilidade: coluna de copy do hero sobre o fade sage */
+    .pj-hero-shell > div:first-child {
+      position: relative;
+    }
+
+    .pj-hero-shell > div:first-child .pj-kicker {
+      color: #0B3B3C;
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(15, 118, 110, 0.22);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+    }
+
+    .pj-hero-shell > div:first-child .pj-kicker i {
+      color: var(--pj-teal);
+    }
+
+    .pj-hero-shell > div:first-child h1 {
+      color: #0A1F22;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72), 0 2px 18px rgba(255, 255, 255, 0.38);
+    }
+
+    .pj-hero-shell > div:first-child p {
+      color: #2F4A50;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .pj-hero-shell > div:first-child .pj-actions .btn-ghost {
+      color: #0B3B3C;
+      border-color: rgba(15, 118, 110, 0.3);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .pj-hero-shell > div:first-child .pj-actions .btn-ghost:hover {
+      color: #062D2E;
+      background: #fff;
+      border-color: rgba(15, 118, 110, 0.42);
     }
 
     .pj-hero h1 {
@@ -182,7 +276,9 @@
 
     .hero-proof {
       max-width: 1240px;
-      margin: 90px auto 0;
+      margin: 96px auto 0;
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       overflow: hidden;
@@ -219,6 +315,10 @@
     .pj-section {
       padding: 92px 24px;
       background: #fff;
+    }
+
+    .pj-hero + .pj-section {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
     }
 
     .pj-section.soft { background: #F8FAFC; }
@@ -503,7 +603,15 @@
     }
 
     @media (max-width: 640px) {
-      .pj-hero { padding: 92px 18px 0; }
+      body.page-empresas { --pj-nav-stack: 74px; }
+      .pj-hero { padding: calc(var(--pj-nav-stack) + 28px) 18px 44px; }
+      .pj-hero::after {
+        top: 38px;
+        right: -250px;
+        width: 440px;
+        height: 320px;
+        opacity: 0.44;
+      }
       .hero-proof,
       .offer-grid,
       .use-cases {
@@ -523,10 +631,10 @@
     }
   </style>
 </head>
-<body>
+<body class="page-empresas">
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"><span class="brand-copy"><span class="brand-name">Fintechzada</span><span class="brand-tagline">S/A</span></span></a>
       <nav><ul class="nav-links">
         <li><a href="conta-digital.html">Conta Digital</a></li>
         <li><a href="cartao.html">Cartao</a></li>
@@ -535,7 +643,7 @@
         <li><a href="seguros.html">Seguros</a></li>
         <li><a class="active" href="empresas.html">Empresas</a></li>
       </ul></nav>
-      <a class="btn btn-primary" href="#abrir-pj">Abrir PJ</a>
+      <div class="nav-actions"><a class="btn btn-ghost nav-login" href="#"><i data-lucide="log-in"></i>Entrar</a><a class="btn btn-primary" href="#abrir-pj">Abrir PJ</a></div>
     </div>
   </header>
 

@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="product-atmosphere.css">
   <link rel="stylesheet" href="conta-digital.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,21 +20,7 @@
     .eyebrow { color: #0369A1; }
     .hero-meta i { color: #06B6D4; }
     .card-link { color: #0B6FA5; }
-    .hero {
-      min-height: 720px;
-      padding-bottom: 88px;
-      background:
-        radial-gradient(ellipse 65% 60% at 92% 50%, rgba(6,182,212,0.17), transparent),
-        radial-gradient(ellipse 42% 52% at 0% 96%, rgba(20,184,166,0.13), transparent),
-        linear-gradient(108deg, #ECFDF5 0%, #F0FDFA 42%, #F8FAFC 100%);
-      color: #0F172A;
-    }
-    .hero::before {
-      background: linear-gradient(180deg, rgba(248,250,252,0.32) 0%, transparent 28%);
-    }
-    .hero h1 { color: #0F172A; }
-    .hero p { color: #334155; }
-    .hero .hero-meta { color: #475569; }
+    /* hero/atmosphere → product-atmosphere.css */
     .hero .btn-primary {
       background: linear-gradient(135deg, #0891B2, #06B6D4);
       box-shadow: 0 14px 32px rgba(6, 182, 212, 0.32);
@@ -58,10 +45,10 @@
     }
   </style>
 </head>
-<body>
+<body class="page-conta">
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"><span class="brand-copy"><span class="brand-name">Fintechzada</span><span class="brand-tagline">S/A</span></span></a>
       <nav><ul class="nav-links">
         <li><a class="active" href="conta-digital.html">Conta Digital</a></li>
         <li><a href="cartao.html">Cartão</a></li>
@@ -70,7 +57,7 @@
         <li><a href="seguros.html">Seguros</a></li>
         <li><a href="empresas.html">Empresas</a></li>
       </ul></nav>
-      <a class="btn btn-primary" href="#abrir-conta">Abrir conta</a>
+      <div class="nav-actions"><a class="btn btn-ghost nav-login" href="#"><i data-lucide="log-in"></i>Entrar</a><a class="btn btn-primary" href="#abrir-conta">Abrir conta</a></div>
     </div>
   </header>
 

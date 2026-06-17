@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="product-atmosphere.css">
   <link rel="stylesheet" href="credito.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -17,10 +18,10 @@
     .tag i { color: var(--cr-primary, #0F766E); }
   </style>
 </head>
-<body>
+<body class="page-credito">
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"><span class="brand-copy"><span class="brand-name">Fintechzada</span><span class="brand-tagline">S/A</span></span></a>
       <nav><ul class="nav-links">
         <li><a href="conta-digital.html">Conta Digital</a></li>
         <li><a href="cartao.html">Cartão</a></li>
@@ -29,7 +30,7 @@
         <li><a href="seguros.html">Seguros</a></li>
         <li><a href="empresas.html">Empresas</a></li>
       </ul></nav>
-      <a class="btn btn-primary" href="#simular">Simular</a>
+      <div class="nav-actions"><a class="btn btn-ghost nav-login" href="#"><i data-lucide="log-in"></i>Entrar</a><a class="btn btn-primary" href="#simular">Simular</a></div>
     </div>
   </header>
 

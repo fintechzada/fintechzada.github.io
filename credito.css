@@ -17,8 +17,17 @@
 }
 
 /* ── Hero workspace ── */
+body.page-credito {
+  --cr-nav-stack: 90px;
+  background: var(--cr-deep);
+}
+
+body.page-credito main {
+  margin-top: calc(-1 * var(--cr-nav-stack));
+}
+
 .cr-workspace {
-  padding: 100px 24px 64px;
+  padding: calc(var(--cr-nav-stack) + 36px) 24px 64px;
   min-height: 92vh;
   display: flex;
   flex-direction: column;
@@ -26,7 +35,9 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 0%, var(--cr-teal-glow), transparent),
+    linear-gradient(180deg, rgba(6, 26, 27, 0.98) 0%, rgba(6, 26, 27, 0.9) 118px, rgba(6, 26, 27, 0) 260px),
+    radial-gradient(ellipse 58% 34% at 50% 96px, rgba(20, 184, 166, 0.28), transparent 68%),
+    radial-gradient(ellipse 36% 30% at 12% 18%, rgba(163, 230, 53, 0.12), transparent 68%),
     radial-gradient(ellipse 40% 40% at 100% 80%, var(--cr-lime-glow), transparent),
     linear-gradient(180deg, var(--cr-deep) 0%, var(--cr-surface) 45%, var(--cr-primary-dark) 100%);
   color: #fff;
@@ -41,6 +52,22 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.cr-workspace::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: min(1120px, calc(100% - 48px));
+  height: 132px;
+  transform: translateX(-50%);
+  border-radius: 0 0 34px 34px;
+  background:
+    linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.12), transparent),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+  border-bottom: 1px solid rgba(209, 250, 229, 0.12);
   pointer-events: none;
 }
 
@@ -824,7 +851,8 @@
 }
 
 @media (max-width: 680px) {
-  .cr-workspace { min-height: auto; padding-top: 96px; }
+  body.page-credito { --cr-nav-stack: 74px; }
+  .cr-workspace { min-height: auto; padding-top: calc(var(--cr-nav-stack) + 28px); }
   .cr-sim-value { font-size: 36px; }
   .cr-sim-tab { min-width: calc(50% - 6px); flex: unset; }
   .cr-matrix { font-size: 12px; }

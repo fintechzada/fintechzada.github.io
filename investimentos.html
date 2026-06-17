@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="product-atmosphere.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
@@ -20,9 +21,13 @@
       --invest-ink: #061A1B;
     }
 
-    body {
-      background:
-        linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 34%, #F8FAFC 100%);
+    body.page-invest {
+      --invest-nav-stack: 90px;
+      background: #061A1B;
+    }
+
+    body.page-invest main {
+      margin-top: calc(-1 * var(--invest-nav-stack));
     }
 
     .nav .btn-primary,
@@ -36,26 +41,46 @@
 
     .invest-hero {
       min-height: 760px;
-      padding: 118px 24px 70px;
+      padding: calc(var(--invest-nav-stack) + 54px) 24px 76px;
       color: #fff;
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at 82% 18%, rgba(20, 184, 166, 0.22), transparent 28%),
-        radial-gradient(circle at 10% 78%, rgba(163, 230, 53, 0.12), transparent 28%),
-        linear-gradient(135deg, #061A1B, #0F2A2B 52%, #0B3B3C);
+        radial-gradient(ellipse 64% 34% at 66% 10%, rgba(20, 184, 166, 0.24), transparent 66%),
+        radial-gradient(ellipse 42% 34% at 10% 20%, rgba(163, 230, 53, 0.1), transparent 70%),
+        linear-gradient(128deg, rgba(15, 118, 110, 0.18) 0 18%, transparent 18% 100%),
+        linear-gradient(154deg, #061A1B 0%, #082325 44%, #0B3B3C 100%);
     }
 
     .invest-hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.22;
+      z-index: 0;
+      opacity: 0.24;
       background-image:
         linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(180deg, #000, transparent 88%);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, #000 0%, #000 48%, transparent 90%);
+    }
+
+    .invest-hero::after {
+      content: "";
+      position: absolute;
+      top: -70px;
+      right: -12%;
+      width: min(980px, 78vw);
+      height: 430px;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(118deg, transparent 0 18%, rgba(255,255,255,0.07) 18% 19%, transparent 19% 100%),
+        linear-gradient(118deg, transparent 0 41%, rgba(163,230,53,0.16) 41% 42%, transparent 42% 100%),
+        linear-gradient(118deg, transparent 0 62%, rgba(20,184,166,0.18) 62% 63%, transparent 63% 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+      filter: blur(0.2px);
     }
 
     .invest-hero-inner {
@@ -148,10 +173,30 @@
       min-height: 560px;
       padding: 22px;
       border-radius: 34px;
-      background: rgba(255,255,255,0.08);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.055)),
+        rgba(6,26,27,0.42);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 34px 90px rgba(0,0,0,0.36);
       backdrop-filter: blur(18px);
+    }
+
+    .market-board::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 26px;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, transparent 0 28%, rgba(163,230,53,0.14) 28% 29%, transparent 29% 100%),
+        linear-gradient(155deg, transparent 0 58%, rgba(20,184,166,0.14) 58% 59%, transparent 59% 100%);
+      opacity: 0.7;
+      mask-image: linear-gradient(180deg, transparent, #000 18%, #000 74%, transparent);
+    }
+
+    .market-board > * {
+      position: relative;
+      z-index: 1;
     }
 
     .board-top {
@@ -708,7 +753,15 @@
     }
 
     @media (max-width: 640px) {
-      .invest-hero { padding: 92px 18px 54px; min-height: auto; }
+      body.page-invest { --invest-nav-stack: 74px; }
+      .invest-hero { padding: calc(var(--invest-nav-stack) + 28px) 18px 54px; min-height: auto; }
+      .invest-hero::after {
+        top: -40px;
+        right: -38%;
+        width: 122vw;
+        height: 300px;
+        opacity: 0.72;
+      }
       .invest-proof,
       .allocation-ring,
       .asset-ticker,
@@ -733,10 +786,10 @@
     }
   </style>
 </head>
-<body>
+<body class="page-invest">
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"></a>
+      <a class="brand" href="index.html"><img class="brand-logo" src="fintechzada-logo.png" alt="Fintechzada" width="130" height="44"><span class="brand-copy"><span class="brand-name">Fintechzada</span><span class="brand-tagline">S/A</span></span></a>
       <nav><ul class="nav-links">
         <li><a href="conta-digital.html">Conta Digital</a></li>
         <li><a href="cartao.html">Cartão</a></li>
@@ -745,7 +798,7 @@
         <li><a href="seguros.html">Seguros</a></li>
         <li><a href="empresas.html">Empresas</a></li>
       </ul></nav>
-      <a class="btn btn-primary" href="#investir">Investir</a>
+      <div class="nav-actions"><a class="btn btn-ghost nav-login" href="#"><i data-lucide="log-in"></i>Entrar</a><a class="btn btn-primary" href="#investir">Investir</a></div>
     </div>
   </header>
 

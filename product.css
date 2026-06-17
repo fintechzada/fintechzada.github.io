@@ -315,17 +315,17 @@ h1 {
 
 .stack-card-back {
   transform: translate(-138px, -12px) rotate(-12deg) scale(0.86);
-  opacity: 0.72;
+  z-index: 1;
 }
 
 .stack-card-mid {
   transform: translate(12px, -20px) rotate(8deg) scale(0.92);
-  opacity: 0.9;
+  z-index: 2;
 }
 
 .stack-card-front {
   transform: translate(118px, 28px) rotate(2deg);
-  z-index: 2;
+  z-index: 3;
 }
 
 .section { padding: 82px 24px; }
@@ -1666,3 +1666,143 @@ footer {
 }
 
 .bento-card a:hover { color: var(--primary); }
+
+/* Navbar premium compartilhada com a index */
+.nav {
+  padding: 16px 20px 0;
+  background: linear-gradient(180deg, rgba(6, 26, 27, 0.18), rgba(6, 26, 27, 0));
+}
+
+.nav-inner {
+  height: 74px;
+  padding: 0 10px;
+  gap: 14px;
+  border: 1px solid rgba(209, 250, 229, 0.16);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(163, 230, 53, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 20%, rgba(20, 184, 166, 0.14), transparent 30%),
+    rgba(6, 26, 27, 0.82);
+  box-shadow: 0 20px 60px rgba(6, 26, 27, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.nav-inner::before {
+  inset: 9px auto 9px 9px;
+  width: 58px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.24), rgba(20, 184, 166, 0.08));
+}
+
+.nav-inner::after {
+  top: 0;
+  left: 78px;
+  right: 10px;
+  width: auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(209, 250, 229, 0.34), transparent);
+}
+
+.brand {
+  min-width: 218px;
+  gap: 12px;
+  padding: 0 12px 0 8px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.brand-logo {
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.brand-copy {
+  display: grid;
+  gap: 1px;
+  line-height: 1.05;
+}
+
+.brand-name {
+  color: #fff;
+  letter-spacing: 0;
+}
+
+.brand-tagline {
+  color: #A7F3D0;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  gap: 3px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a {
+  height: 40px;
+  padding: 0 11px;
+  color: #D1FAE5;
+  font-size: 13px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.11);
+  color: #fff;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  z-index: 1;
+}
+
+.nav .btn {
+  min-height: 44px;
+  border-radius: 999px;
+}
+
+.nav .btn-ghost {
+  color: #D1FAE5;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(209, 250, 229, 0.2);
+  box-shadow: none;
+}
+
+.nav .btn-ghost:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(209, 250, 229, 0.36);
+}
+
+.nav-login {
+  padding: 0 16px;
+}
+
+@media (max-width: 980px) {
+  .brand { min-width: auto; }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 10px 12px 0; }
+  .nav-inner { height: 64px; padding: 0 9px; border-radius: 20px; }
+  .nav-actions .btn-ghost { display: none; }
+  .brand-logo { height: 36px; }
+  .brand-tagline { display: none; }
+  .nav .btn { min-height: 38px; padding: 0 13px; font-size: 13px; }
+}
+
+@media (max-width: 430px) {
+  .brand-name { display: none; }
+  .brand { padding-right: 4px; }
+  .nav .btn-primary { padding: 0 11px; }
+}
